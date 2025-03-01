@@ -1,0 +1,13 @@
+<main>
+    <div class="management-container">
+      <h2>Gestión de Usuarios</h2>
+      <div class="search-bar">
+        <input type="text" id="search" placeholder="Buscar usuario..." [(ngModel)]="searchTerm" (keyup.enter)="buscarUsuarios()">
+        <button type="submit" id="search-button" class="search-button" (click)="buscarUsuarios()">Buscar</button>
+      </div>
+      <button type="submit" class="add-user-button" routerLink="/register">Agregar Usuario</button>
+      <!-- Pasar la lista de usuarios al componente hijo -->
+      <app-gestion-lista [usuariosFiltrados]="usuariosFiltrados" (usuarioActualizado)="cargarUsuarios()"></app-gestion-lista>
+      <div class="rectangle" aria-hidden="true"></div>
+    </div>
+  </main>

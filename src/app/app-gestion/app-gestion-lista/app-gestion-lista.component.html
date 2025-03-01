@@ -1,0 +1,43 @@
+<table class="user-table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombre Completo</th>
+      <th>Usuario</th>
+      <th>Cédula</th>
+      <th>Dirección</th>
+      <th>Rol</th>
+      <th>Teléfono</th>
+      <th>Contraseña</th>
+      <th>Estado</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tbody>
+      <!-- Utilizando @for en lugar de *ngFor -->
+      @for (usuario of usuariosFiltrados; track usuario.idUsuario) {
+        <tr>
+          <td>{{ usuario.idUsuario }}</td>
+          <td>{{ usuario.nombreCompleto }}</td>
+          <td>{{ usuario.nombreUsuario }}</td>
+          <td>{{ usuario.cedula }}</td>
+          <td>{{ usuario.direccion }}</td>
+          <td>{{ usuario.rol }}</td>
+          <td>{{ usuario.telefono }}</td>
+          <td>{{ usuario.contrasena }}</td>
+          <td>{{ usuario.estado }}</td>
+          <td>
+            <!-- Botón para modificar usuario -->
+            <button class="edit-button" (click)="modificarUsuario(usuario.idUsuario)">Modificar</button>
+            <!-- Botón para cambiar estado (Activar/Inactivar) -->
+            <button class="deactivate-button" (click)="cambiarEstadoUsuario(usuario.idUsuario, usuario.estado === 'ACTIVO' ? 'INACTIVO' : 'ACTIVO')">
+              {{ usuario.estado === 'ACTIVO' ? 'Inactivar' : 'Activar' }}
+            </button>
+            <!-- Botón para eliminar usuario -->
+            <button class="delete-button" (click)="eliminarUsuario(usuario.idUsuario)">Eliminar</button>
+          </td>
+        </tr>
+      }
+    </tbody>
+    
