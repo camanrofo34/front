@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
-import { UsuariosService } from '../services/usuarios.service';
-import { Usuario } from '../domain/usuario.model';
+import { UsuariosService } from '../../services/usuarios.service';
+import { Usuario } from '../../domain/usuario.model';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -36,7 +36,7 @@ export class AppRegisterComponent {
     this.usuariosService.crearUsuario(this.usuario).subscribe({
       next: (response) => {
         console.log('Usuario creado:', response);
-        this.router.navigate(['/gestion']); // Redirige a la página de gestión
+        this.router.navigate(['/usuarios/gestion']); // Redirige a la página de gestión
       },
       error: (error) => {
         console.error('Error al crear usuario:', error);

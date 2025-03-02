@@ -24,10 +24,10 @@ export class LoginComponent {
   // Método que se ejecuta al enviar el formulario
   onSubmit(): void {
     // Llama al servicio de login para autenticar al usuario
-    this.loginService.login(this.username, this.password).subscribe({
+    this.loginService.loginAdminUsuarios(this.username, this.password).subscribe({
       next: (response) => {
         // Redirige al usuario a la página de gestión después del login exitoso
-        this.router.navigate(['/gestion']);
+        this.router.navigate(['/usuarios/gestion']);
       },
       error: (error) => {
         console.error('Login failed', error);

@@ -1,29 +1,29 @@
 import { Routes } from '@angular/router';
-import { LoginComponent } from './app-login/app-login.component';
-import { AppRegisterComponent } from './app-register/app-register.component';
+import { LoginComponent } from './app-login-usuarios/app-login.component';
+import { AppRegisterComponent } from './app-login-usuarios/app-register/app-register.component';
 import { AppGestionComponent } from './app-gestion/app-gestion.component';
 import { AppGestionListaComponent } from './app-gestion/app-gestion-lista/app-gestion-lista.component';
-import { AppModifyComponent } from './app-modify/app-modify.component';
+import { AppModifyComponent } from './app-login-usuarios/app-modify/app-modify.component';
 
 const routeConfig: Routes = [
   {
-    path: '',
+    path: 'usuarios',
     component: LoginComponent
   },
   {
-    path: 'gestion',
+    path: 'usuarios/gestion',
     component: AppGestionComponent
   },
   {
-    path: 'register',
+    path: 'usuarios/register',
     component: AppRegisterComponent
   },
   {
-    path: 'list',
+    path: 'usuarios/list',
     component: AppGestionListaComponent
   },
   {
-    path: 'modify',
+    path: 'usuarios/modify/:idUsuario',
     component: AppModifyComponent
   }
 ];

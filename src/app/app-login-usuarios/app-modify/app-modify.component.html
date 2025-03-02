@@ -1,0 +1,40 @@
+<div class="modify-container">
+    <h2>Modificar Usuario</h2>
+    <form *ngIf="usuario" (ngSubmit)="onSubmit()">
+      <div class="input-group">
+        <label for="nombreCompleto">Nombre Completo</label>
+        <input type="text" id="nombreCompleto" [(ngModel)]="usuario.nombreCompleto" name="nombreCompleto" required>
+      </div>
+      <div class="input-group">
+        <label for="nombreUsuario">Usuario</label>
+        <input type="text" id="nombreUsuario" [(ngModel)]="usuario.nombreUsuario" name="nombreUsuario" required>
+      </div>
+      <div class="input-group">
+        <label for="contrasena">Contraseña</label>
+        <input type="password" id="contrasena" [(ngModel)]="usuario.contrasena" name="contrasena" required>
+      </div>
+      <div class="input-group">
+        <label for="cedula">Cédula</label>
+        <input type="text" id="cedula" [(ngModel)]="usuario.cedula" name="cedula" required>
+      </div>
+      <div class="input-group">
+        <label for="direccion">Dirección</label>
+        <input type="text" id="direccion" [(ngModel)]="usuario.direccion" name="direccion" required>
+      </div>
+      <div class="input-group">
+        <label for="telefono">Teléfono</label>
+        <input type="tel" id="telefono" [(ngModel)]="usuario.telefono" name="telefono" required>
+      </div>
+      <div class="input-group">
+        <label for="rol">Rol</label>
+        <select id="rol" [(ngModel)]="usuario.rol" name="rol" required>
+          <option value="RECEPCION">RECEPCION</option>
+          <option value="SECRETARIO">SECRETARIO</option>
+          <option value="ADMINUSUARIOS">ADMINUSUARIOS</option>
+          <option value="ADMININVENTARIO">ADMININVENTARIO</option>
+          <option value="ASESORCOMERCIAL">ASESORCOMERCIAL</option>
+        </select>
+      </div>
+      <button type="submit" class="modify-button">Guardar Cambios</button>
+    </form>
+  </div>

@@ -11,10 +11,25 @@ export class LoginServiceService {
 
   constructor(private http: HttpClient) {}
 
-  login(username: string, password: string): Observable<string> {
+  loginAdminUsuarios(username: string, password: string): Observable<string> {
     const body = { nombreUsuario: username, contrasena: password }; // Objeto JSON
 
     return this.http.post(`${this.apiUrl}/autenticacion/login-adminusuarios`, body, {
+      headers: { 'Content-Type': 'application/json' }, // Configura el header para JSON
+      responseType: 'text' // Indica que la respuesta es texto plano, no JSON
+    }).pipe(
+      tap((token: string) => {
+        console.log('Token recibido:', token);
+        localStorage.setItem('token', token); // Almacena el token en localStorage
+      }),
+      catchError(this.handleError) // Maneja errores
+    );
+  }
+
+  loginAdminRecepcion(username: string, password: string): Observable<string> {
+    const body = { nombreUsuario: username, contrasena: password }; // Objeto JSON
+
+    return this.http.post(`${this.apiUrl}/autenticacion/login-recepcion`, body, {
       headers: { 'Content-Type': 'application/json' }, // Configura el header para JSON
       responseType: 'text' // Indica que la respuesta es texto plano, no JSON
     }).pipe(

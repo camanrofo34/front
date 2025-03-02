@@ -37,7 +37,7 @@ export class AppGestionListaComponent implements OnInit {
 
   // Método para modificar un usuario
   modificarUsuario(idUsuario: number): void {
-    this.router.navigate(['/modify', idUsuario]); // Navegar a la página de modificación
+    this.router.navigate(['/usuarios/modify', idUsuario]); // Navegar a la página de modificación
   }
 
 cambiarEstadoUsuario(idUsuario: number, nuevoEstado: string): void {
