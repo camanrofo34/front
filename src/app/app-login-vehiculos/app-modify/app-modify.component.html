@@ -1,0 +1,34 @@
+<div class="modify-container">
+    <div class="modify-container">
+      <h2>Modificar Vehículo</h2>
+      <form *ngIf="vehiculo" (ngSubmit)="onSubmit()">
+        <div class="input-group">
+          <label>Nombre</label>
+          <input type="text" [(ngModel)]="vehiculo.nombre" name="nombre" required>
+        </div>
+        <div class="input-group">
+          <label>Marca</label>
+          <input type="text" [(ngModel)]="vehiculo.marca" name="marca" readonly>
+        </div>
+        <div class="input-group">
+          <label>Modelo</label>
+          <input type="text" [(ngModel)]="vehiculo.modelo" name="modelo" required>
+        </div>
+        <div class="input-group">
+          <label>Descripción</label>
+          <textarea [(ngModel)]="vehiculo.descripcion" name="descripcion" required></textarea>
+        </div>
+        <div class="input-group">
+          <label>Precio</label>
+          <input type="number" [(ngModel)]="vehiculo.precio" name="precio" required>
+        </div>
+        <div class="input-group">
+          <label>Stock</label>
+          <input type="number" [(ngModel)]="vehiculo.stock" name="stock" required>
+        </div>
+        <div class="modify-buttons">
+          <button type="submit" class="save-button">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>

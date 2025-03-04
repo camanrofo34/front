@@ -1,0 +1,35 @@
+  <table class="vehicle-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Marca</th>
+        <th>Modelo</th>
+        <th>Descripción</th>
+        <th>Precio</th>
+        <th>Stock</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Utilizando @for en lugar de *ngFor -->
+      @for (vehiculo of vehiculosFiltrados; track vehiculo.idVehiculo) {
+        <tr>
+          <td>{{ vehiculo.idVehiculo }}</td>
+          <td>{{ vehiculo.nombre }}</td>
+          <td>{{ vehiculo.marca }}</td>
+          <td>{{ vehiculo.modelo }}</td>
+          <td>{{ vehiculo.descripcion }}</td>
+          <td>{{ vehiculo.precio }}</td>
+          <td>{{ vehiculo.stock }}</td>
+          <td>
+            <!-- Botón para modificar vehículo -->
+            <button class="edit-button" (click)="modificarVehiculo(vehiculo.idVehiculo)">Modificar</button>
+            <!-- Botón para dar de baja vehículo -->
+            <!-- Botón para eliminar vehículo -->
+            <button class="delete-button" (click)="eliminarVehiculo(vehiculo.idVehiculo)">Eliminar</button>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>

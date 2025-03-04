@@ -1,0 +1,34 @@
+<main>
+  <div class="management-container">
+
+    <!-- Botón para cerrar sesión -->
+    <div class="logout-container">
+      <button type="button" class="logout-button" (click)="cerrarSesion()">Cerrar Sesión</button>
+    </div>
+
+    <h2>Gestión de Usuarios</h2>
+
+    <!-- Búsqueda por nombre e ID -->
+    <div class="search-bar">
+      <!-- Búsqueda por nombre -->
+      <input type="text" id="search" placeholder="Buscar usuario..." [(ngModel)]="searchTerm" (keyup.enter)="buscarUsuarios()">
+      <button type="submit" id="search-button" class="search-button" (click)="buscarUsuarios()">Buscar</button>
+
+      <!-- Búsqueda por ID -->
+      <input type="number" id="search-id" placeholder="Buscar por ID..." [(ngModel)]="searchId">
+      <button type="submit" id="search-id-button" class="search-button" (click)="buscarUsuarioPorId()">Buscar por ID</button>
+    </div>
+
+    <!-- Botón para agregar usuario -->
+    <button type="submit" class="add-user-button" routerLink="/usuarios/register">Agregar Usuario</button>
+
+    <!-- Lista de usuarios -->
+    <app-gestion-lista 
+      [usuariosFiltrados]="usuariosFiltrados" 
+      (usuarioActualizado)="cargarUsuarios()">
+    </app-gestion-lista>
+
+    <div class="rectangle" aria-hidden="true"></div>
+  </div>
+</main>
+

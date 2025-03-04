@@ -1,0 +1,33 @@
+<main>
+  <div class="management-container">
+
+    <!-- Botón para cerrar sesión -->
+    <div class="logout-container">
+      <button type="button" class="logout-button" (click)="cerrarSesion()">Cerrar Sesión</button>
+    </div>
+
+    <h2>Gestión de Vehículos</h2>
+
+    <!-- Búsqueda por nombre e ID -->
+    <div class="search-bar">
+      <!-- Búsqueda por nombre -->
+      <input type="text" id="search" placeholder="Buscar vehículo..." [(ngModel)]="searchTerm" (keyup.enter)="buscarVehiculos()">
+      <button type="submit" id="search-button" class="search-button" (click)="buscarVehiculos()">Buscar</button>
+
+      <!-- Búsqueda por ID -->
+      <input type="number" id="search-id" placeholder="Buscar por ID..." [(ngModel)]="searchId">
+      <button type="submit" id="search-id-button" class="search-button" (click)="buscarVehiculoPorId()">Buscar por ID</button>
+    </div>
+
+    <!-- Botón para agregar vehículo -->
+    <button type="submit" class="add-user-button" routerLink="/vehiculos/register">Agregar Vehículo</button>
+
+    <!-- Lista de vehículos -->
+    <app-gestion-lista-vehiculos 
+      [vehiculosFiltrados]="vehiculosFiltrados" 
+      (vehiculoActualizado)="cargarVehiculos()">
+    </app-gestion-lista-vehiculos>
+
+    <div class="rectangle" aria-hidden="true"></div>
+  </div>
+</main>

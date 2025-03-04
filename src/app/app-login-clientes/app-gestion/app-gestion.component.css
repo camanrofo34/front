@@ -1,0 +1,81 @@
+/* Estilos generales para el contenedor principal */
+.container {
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Ocupa toda la altura de la pantalla */
+    background-color: #86cecb; 
+}
+
+/* Caja de contenido donde se muestra la lista */
+.content-box {
+    width: 50rem; /* Ancho de la caja */
+    padding: 20px;
+    background-color: #f8f8f8; /* Fondo gris azulado */
+    border-radius: 10px; /* Bordes redondeados */
+    text-align: left; /* Alineación del texto a la izquierda */
+}
+
+/* Título principal de la lista */
+h2 {
+    margin-bottom: 10px; /* Espaciado inferior */
+}
+
+/* Barra de búsqueda */
+.search-bar {
+    width: 100%; /* Ocupar todo el ancho disponible */
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Tabla de usuarios */
+.user-table {
+    width: 100%; /* Ocupar todo el ancho de la caja */
+    border-collapse: collapse; /* Elimina el espacio entre bordes */
+    background: white; /* Fondo blanco */
+    border-radius: 5px; /* Bordes redondeados */
+    overflow: hidden; /* Evita que los bordes redondeados se corten */
+}
+
+/* Encabezados de la tabla */
+.user-table th {
+    background-color: #5a9; /* Fondo verde */
+    color: white; /* Texto blanco */
+    padding: 10px;
+    border: 1px solid #ddd; /* Bordes suaves */
+    text-align: left;
+}
+
+/* Celdas de la tabla */
+.user-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+/* Botones de acción (Agregar y Eliminar)  */
+.btn {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Estilos específicos para el botón de Agregar */
+.agregar {
+    background-color: #4CAF50; /* Verde */
+    color: white;
+}
+
+/* Estilos específicos para el botón de Eliminar */
+.modificar {
+    background-color: #e09c09; 
+    color: white;
+}
+
+/* Efecto hover para los botones */
+.btn:hover {
+    opacity: 0.8;
+}

@@ -13,7 +13,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './app-modify.component.css'
 })
 
-export class AppModifyComponent implements OnInit{
+export class ModifyComponentUsers implements OnInit{
   usuario: Usuario = {
     idUsuario: 0,
     nombreCompleto: '',

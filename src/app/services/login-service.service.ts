@@ -2,19 +2,21 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
+import { ApiConfigService } from './api-config-service.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginServiceService {
-  private apiUrl = 'http://127.0.0.1:8080'; // URL de tu API
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, 
+    private apiConfigService: ApiConfigService
+  ) {}
 
   loginAdminUsuarios(username: string, password: string): Observable<string> {
     const body = { nombreUsuario: username, contrasena: password }; // Objeto JSON
 
-    return this.http.post(`${this.apiUrl}/autenticacion/login-adminusuarios`, body, {
+    return this.http.post(`${this.apiConfigService.getApiUrl()}/autenticacion/login-adminusuarios`, body, {
       headers: { 'Content-Type': 'application/json' }, // Configura el header para JSON
       responseType: 'text' // Indica que la respuesta es texto plano, no JSON
     }).pipe(
@@ -29,7 +31,7 @@ export class LoginServiceService {
   loginAdminRecepcion(username: string, password: string): Observable<string> {
     const body = { nombreUsuario: username, contrasena: password }; // Objeto JSON
 
-    return this.http.post(`${this.apiUrl}/autenticacion/login-recepcion`, body, {
+    return this.http.post(`${this.apiConfigService.getApiUrl()}/autenticacion/login-recepcion`, body, {
       headers: { 'Content-Type': 'application/json' }, // Configura el header para JSON
       responseType: 'text' // Indica que la respuesta es texto plano, no JSON
     }).pipe(
@@ -40,6 +42,53 @@ export class LoginServiceService {
       catchError(this.handleError) // Maneja errores
     );
   }
+
+  loginSecretario(username: string, password: string): Observable<string> {
+    const body = { nombreUsuario: username, contrasena: password }; // Objeto JSON
+
+    return this.http.post(`${this.apiConfigService.getApiUrl()}/autenticacion/login-secretario`, body, {
+      headers: { 'Content-Type': 'application/json' }, // Configura el header para JSON
+      responseType: 'text' // Indica que la respuesta es texto plano, no JSON
+    }).pipe(
+      tap((token: string) => {
+        console.log('Token recibido:', token);
+        localStorage.setItem('token', token); // Almacena el token en localStorage
+      }),
+      catchError(this.handleError) // Maneja errores
+    );
+  }
+
+  loginAdminInventario(username: string, password: string): Observable<string> {
+    const body = { nombreUsuario: username, contrasena: password }; // Objeto JSON
+
+    return this.http.post(`${this.apiConfigService.getApiUrl()}/autenticacion/login-admininventario`, body, {
+      headers: { 'Content-Type': 'application/json' }, // Configura el header para JSON
+      responseType: 'text' // Indica que la respuesta es texto plano, no JSON
+    }).pipe(
+      tap((token: string) => {
+        console.log('Token recibido:', token);
+        localStorage.setItem('token', token); // Almacena el token en localStorage
+      }),
+      catchError(this.handleError) // Maneja errores
+    );
+  }
+
+
+  loginAsesorComercial(username: string, password: string): Observable<string> {
+    const body = { nombreUsuario: username, contrasena: password }; // Objeto JSON
+
+    return this.http.post(`${this.apiConfigService.getApiUrl()}/autenticacion/login-asesorcomercial`, body, {
+      headers: { 'Content-Type': 'application/json' }, // Configura el header para JSON
+      responseType: 'text' // Indica que la respuesta es texto plano, no JSON
+    }).pipe(
+      tap((token: string) => {
+        console.log('Token recibido:', token);
+        localStorage.setItem('token', token); // Almacena el token en localStorage
+      }),
+      catchError(this.handleError) // Maneja errores
+    );
+  }
+
 
   logout(): void {
     localStorage.removeItem('token'); // Borra el token

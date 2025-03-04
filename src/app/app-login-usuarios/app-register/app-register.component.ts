@@ -12,7 +12,7 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './app-register.component.html',
   styleUrl: './app-register.component.css'
 })
-export class AppRegisterComponent {
+export class RegisterComponentUsers {
   usuario: Usuario = {
     idUsuario: 0,
     nombreCompleto: '',
@@ -21,7 +21,7 @@ export class AppRegisterComponent {
     cedula: '',
     direccion: '',
     telefono: '',
-    rol: 'RECEPCION', // Valor por defecto
+    rol: 'RECEPCION',
     estado: 'ACTIVO' // Estado por defecto
   };
 

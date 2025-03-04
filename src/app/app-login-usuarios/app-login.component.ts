@@ -12,7 +12,7 @@ import { HttpClientModule } from '@angular/common/http'; // Importa HttpClientMo
   templateUrl: './app-login.component.html', // Ruta al archivo HTML
   styleUrls: ['./app-login.component.css'] // Ruta al archivo CSS (si lo tienes)
 })
-export class LoginComponent {
+export class LoginComponentUsers {
   username: string = ''; // Propiedad para el nombre de usuario
   password: string = ''; // Propiedad para la contraseña
 

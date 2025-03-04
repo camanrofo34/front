@@ -1,0 +1,60 @@
+/* Contenedor principal que centra el formulario en la pantalla */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Ocupa toda la altura de la pantalla */
+    background-color: 	#86cecb; 
+}
+
+/* Caja blanca que contiene el formulario */
+.content-box {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.1); /* Sombra para dar efecto elevado */
+    text-align: left;
+    width: 50rem; /* Ancho del formulario */
+}
+
+/* Estilo del título */
+h2 {
+    margin-bottom: 20px;
+    color: #131212;
+
+}
+
+/* Estilos generales para los campos de entrada */
+input {
+    width: 100%; /* Ocupar todo el ancho del contenedor */
+    padding: 10px;
+    margin-bottom: 10px; /* Espaciado entre campos */
+    border: 1px solid #ccc;
+    border-radius: 5px; /* Bordes redondeados */
+}
+
+/* Contenedor de botones con espacio entre ellos */
+.button-group {
+    display: flex;
+    justify-content: space-between; /* Espaciado uniforme entre botones */
+}
+
+/* Estilos generales para los botones */
+.btn {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Botón de aceptar cambios con color verde */
+.aceptar {
+    background-color: #349935;
+    color: white;
+}
+
+/* Botón de eliminar cliente con color rojo */
+.eliminar {
+    background-color: #aa2f21 !important;
+    color: #ffffff !important;
+}

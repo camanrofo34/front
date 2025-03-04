@@ -3,19 +3,25 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Usuario } from '../domain/usuario.model'; // Importa la clase Usuario
-
+import { ApiConfigService } from './api-config-service.service';
 @Injectable({
   providedIn: 'root'
 })
 export class UsuariosService {
-  private apiUrl = 'http://localhost:8080/usuarios'; // URL del backend
+  private apiUrl: string;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,
+    private apiConfigService: ApiConfigService
+  ) {
+    this.apiUrl = `${this.apiConfigService.getApiUrl()}/usuarios`;
+  }
 
   // Método para obtener el token JWT desde localStorage
   private getAuthToken(): string {
     return localStorage.getItem('token') || '';
   }
+
+  
 
   // Método para crear un usuario
   crearUsuario(usuario: Usuario): Observable<Usuario> {

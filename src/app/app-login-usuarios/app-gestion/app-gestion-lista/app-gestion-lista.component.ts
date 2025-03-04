@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { UsuariosService } from '../../services/usuarios.service';
-import { Usuario } from '../../domain/usuario.model';
 import { Router } from '@angular/router';
 import { EventEmitter, Output } from '@angular/core';
+import { Usuario } from '../../../domain/usuario.model';
+import { UsuariosService } from '../../../services/usuarios.service';
 
 @Component({
   selector: 'app-gestion-lista',
@@ -10,7 +10,7 @@ import { EventEmitter, Output } from '@angular/core';
   styleUrls: ['./app-gestion-lista.component.css']
 })
 
-export class AppGestionListaComponent implements OnInit {
+export class GestionListaComponentUsers implements OnInit {
   @Input() usuariosFiltrados: Usuario[] = []; // Lista de usuarios filtrados
   @Output() usuarioActualizado = new EventEmitter<void>(); // Evento para notificar que se actualizó un usuario
 

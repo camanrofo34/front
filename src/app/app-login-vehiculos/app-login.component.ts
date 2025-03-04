@@ -10,7 +10,7 @@ import { LoginServiceService } from '../services/login-service.service';
   templateUrl: './app-login.component.html',
   styleUrl: './app-login.component.css'
 })
-export class LoginComponentClientes {
+export class LoginComponentVehiculos {
       username: string = ''; // Propiedad para el nombre de usuario
       password: string = ''; // Propiedad para la contraseña
     
@@ -22,10 +22,10 @@ export class LoginComponentClientes {
       // Método que se ejecuta al enviar el formulario
       onSubmit(): void {
         // Llama al servicio de login para autenticar al usuario
-        this.loginService.loginAdminRecepcion(this.username, this.password).subscribe({
+        this.loginService.loginAdminInventario(this.username, this.password).subscribe({
           next: (response) => {
             // Redirige al usuario a la página de gestión después del login exitoso
-            this.router.navigate(['/clientes/gestion']);
+            this.router.navigate(['/vehiculos/gestion']);
           },
           error: (error) => {
             console.error('Login failed', error);

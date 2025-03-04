@@ -1,0 +1,33 @@
+<main>
+    <div class="register-container">
+      <h2>Registro de Vehículo</h2>
+      <!-- Usar (ngSubmit) para manejar el envío del formulario -->
+      <form (ngSubmit)="registerVehicle()">
+        <div class="input-group">
+          <label>Nombre</label>
+          <input type="text" [(ngModel)]="vehicle.nombre" name="nombre" required>
+        </div>
+        <div class="input-group">
+          <label>Marca</label>
+          <input type="text" [(ngModel)]="vehicle.marca" name="marca" readonly>
+        </div>
+        <div class="input-group">
+          <label>Modelo</label>
+          <input type="text" [(ngModel)]="vehicle.modelo" name="modelo" required>
+        </div>
+        <div class="input-group">
+          <label>Descripción</label>
+          <textarea [(ngModel)]="vehicle.descripcion" name="descripcion" required></textarea>
+        </div>
+        <div class="input-group">
+          <label>Stock</label>
+          <input type="number" [(ngModel)]="vehicle.stock" name="stock" required>
+        </div>
+        <div class="input-group">
+          <label>Precio</label>
+          <input type="number" [(ngModel)]="vehicle.precio" name="precio" required>
+        </div>
+        <button type="submit" class="register-button">Registrar</button>
+      </form>
+    </div>
+  </main>

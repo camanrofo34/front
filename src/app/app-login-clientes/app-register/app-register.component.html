@@ -1,24 +1,26 @@
 <main class="container">
-    <div class="content-box">
-        <div class="register-container">           
-            <h2>Registro de Cliente</h2>
-  
-            <div class="input-group">
-              <input type="text" placeholder="Nombre completo del Cliente o razón jurídica" [(ngModel)]="cliente.nombre">
-            </div>
-          
-            <div class="input-group">
-              <input type="text" placeholder="Documento de Identidad" [(ngModel)]="cliente.documento">
-            </div>
-          
-            <div class="input-group">
-              <input type="text" placeholder="Número de Teléfono" [(ngModel)]="cliente.telefono">
-            </div>
-            <div class="input-group">
-                <input type="text" placeholder="Dirección" [(ngModel)]="cliente.direccion">
-            </div>
-  
-            <button class="register-btn" (click)="irAListaUsuarios()">Registrar Cliente</button>
-        </div>
-    </div>
-  </main>
+  <div class="content-box">
+   <form id="register-form" (ngSubmit)="onSubmit()" autocomplete="off">
+      <div class="register-container">           
+          <h2>Registro de Cliente</h2>
+
+          <div class="input-group">
+            <input type="text" placeholder="Nombre Legal" [(ngModel)]="cliente.nombreLegal" name="nombreLegal" required>
+          </div>
+        
+          <div class="input-group">
+            <input type="text" placeholder="Numero de Identificacion" [(ngModel)]="cliente.numeroIdentificacion" name="numeroIdentificacion" required>
+          </div>
+        
+          <div class="input-group">
+            <input type="text" placeholder="Número de Teléfono" [(ngModel)]="cliente.telefono" name="telefono" required>
+          </div>
+          <div class="input-group">
+              <input type="text" placeholder="Dirección" [(ngModel)]="cliente.direccion" name="direccion" required>
+          </div>
+
+          <button class="register-btn" type="submit">Registrar Cliente</button>
+      </div>
+    </form> 
+  </div>
+</main>
