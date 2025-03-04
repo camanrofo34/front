@@ -20,9 +20,10 @@
 }
 
     /* Estilo para la imagen del logo en la barra superior */
-.logo {
-    width: 100px; /* Ajusta el tamaño del logo */
-    height: 50px;
-    width: 65px;
-    margin-top: 10px;
-}
+    .logo {
+        width: 100px; /* Ajusta el tamaño del logo */
+        height: 55px;
+        width: 65px;
+        margin-top: 5px;
+    }
+    

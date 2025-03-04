@@ -24,8 +24,8 @@
     margin-top: 1rem;
 }
 
-.save-button {
-    background-color: #4CAF50;
+.edit-button {
+    background-color: #f8b400;
     color: white;
     padding: 0.75rem 1.5rem;
     border: none;
@@ -33,11 +33,11 @@
     cursor: pointer;
 }
 
-.save-button:hover {
-    background-color: #45a049;
+.edit-button:hover {
+    background-color: #f08d00;
 }
 
-.cancel-button {
+.delete-button {
     background-color: #f44336;
     color: white;
     padding: 0.75rem 1.5rem;
@@ -46,7 +46,7 @@
     cursor: pointer;
 }
 
-.cancel-button:hover {
+.delete-button:hover {
     background-color: #d32f2f;
 }
 

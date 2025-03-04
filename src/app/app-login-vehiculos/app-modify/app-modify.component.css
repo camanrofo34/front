@@ -1,77 +1,88 @@
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* 🔥 Oscurece el fondo */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000; /* 🔥 Se asegura de que esté por encima de todo */
-}
-
-/* ✅ Diseño del modal */
-.modal-content {
+.modify-container {
     background-color: white;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    width: 90%;
-    max-width: 500px;
-    text-align: center;
-    position: relative;
-    z-index: 1001; /* 🔥 Se asegura de que esté sobre el overlay */
+    padding: 4rem;
+    margin: 70px auto 40px auto; /* Centra horizontalmente */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 30%;
+    display: block;
+    margin-top: 100px;
 }
 
-/* ✅ Input bonito */
+/* Evitar duplicación de estilos en elementos anidados */
+.modify-container > .modify-container {
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+    width: 100%;
+}
+
+.modify-container h2 {
+    margin-bottom: 2.2rem;
+    border-bottom: 1.5px solid #b8b8b8;
+    padding-bottom: 1.2rem;
+    font-size: 2rem;
+    text-align: justify;
+    color: #555;
+}
+
+/* Estilo para los grupos de entradas */
 .input-group {
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
     text-align: left;
 }
 
+/* Estilo para las etiquetas de entrada */
 .input-group label {
+    display: block;
     font-weight: bold;
-    color: #333;
+    margin-bottom: 0.5rem;
+    color: #8b8b8b;
 }
 
-.input-group input {
-    width: 100%;
-    padding: 0.75rem;
-    border: 1px solid #ccc;
+/* Estilo para las entradas de texto y número */
+.input-group input,
+.input-group textarea {
+    width: 96%;
+    padding: 0.5rem;
+    border: 1px solid #939393;
     border-radius: 5px;
     font-size: 1rem;
+    box-sizing: border-box;
 }
 
-/* ✅ Botones dentro del modal */
-.modal-buttons {
+.input-group textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+/* Botones dentro del formulario */
+.modify-buttons {
     display: flex;
-    justify-content: space-between;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
 }
 
+/* Estilo para el botón de modificar */
 .save-button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 0.75rem 1.5rem;
+    background-color: #99bada;
+    color: whitesmoke;
     border: none;
+    padding: 0.75rem;
     border-radius: 5px;
+    font-size: 1rem;
+    transition: background-color 0.3s;
     cursor: pointer;
 }
 
+/* Estilo para el hover (al pasar el cursor sobre el botón) */
 .save-button:hover {
-    background-color: #45a049;
+    background-color: #738ca5;
 }
 
-.cancel-button {
-    background-color: #f44336;
-    color: white;
-    padding: 0.75rem 1.5rem;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.cancel-button:hover {
-    background-color: #d32f2f;
+.rectangle {
+    width: 100%;
+    height: 0.5px;
+    margin-top: 1.9rem;
+    background: #b8b8b8;
+    border: 0;
+    border-radius: 0;
 }
