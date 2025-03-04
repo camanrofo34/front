@@ -4,7 +4,7 @@ main {
     align-items: center;
     height: 100vh;
 }
-/* Estilo para el contenedor del formulario de inicio de sesión */
+/*  Estilo para el contenedor del formulario de inicio de sesión */
 .login-container {
     background-color: white;
     padding: 4rem;
