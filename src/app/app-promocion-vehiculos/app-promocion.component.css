@@ -1,34 +1,38 @@
-body {
-    background-color: black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    font-family: Arial, sans-serif;
-    color: white;
-}
 
 .container {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
     width: 100%;
 }
 
 .content-box {
     background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(255, 255, 255, 0.1);
-    text-align: center;
-    width: 400px;
-    color: black;
-    margin-top: 60px;
+    padding: 5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 1000px;
+    display: flex;
+    margin-top: 70px;
+    margin-bottom: 40px;
+    flex-direction: column;
 }
 
-h2 {
-    margin-bottom: 20px;
+/*
+POPIPOPIPOPOPIPO 
+POPIPOPIPOPOPIPO 
+POPIPOPIPOPOPIPO 
+POPIPOPIPOPOPIPO 
+POPIPOPIPOPOPIPO 
+*/
+
+.content-box h2 {
+    margin-bottom: 1.7rem;
+    border-bottom: 1.5px solid #b8b8b8;
+    padding-bottom: 1.2rem;
+    font-size: 2rem;
+    text-align: justify;
+    color: #555;
 }
 
 .vehicle-card {
@@ -40,7 +44,20 @@ h2 {
 }
 
 .vehicle-card h3 {
+    border-bottom: 1.5px solid #b8b8b8;
+    padding-bottom: 0.7rem;
+    margin-bottom: 15px;
+    color: #555;
+}
+
+.vehicle-card strong {
     margin-bottom: 10px;
+    color: #555;
+}
+
+.vehicle-card p {
+    margin-bottom: 10px;
+    color: #838383;
 }
 
 .form-container {
