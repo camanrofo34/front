@@ -38,6 +38,15 @@ main {
     color: #8b8b8b;
 }
 
+.input-group select {
+    width: 100%;
+    padding: 0.55rem;
+    border: 1px solid #939393;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
 /* Estilo para las entradas */
 .input-group input {
     width: 96%;

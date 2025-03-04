@@ -32,72 +32,6 @@ main {
     align-items: start;
 }
 
-.impuesto-table {
-    width: 28%;
-    border-collapse: collapse;
-    margin-top: 1.5rem;
-    table-layout: fixed;
-}
-
-.user-table {
-    width: 47%;
-    border-collapse: collapse;
-    margin-top: 1.5rem;
-    table-layout: fixed;
-}
-
-.impuesto-table th, .impuesto-table td {
-    font-size: 14px;
-    border: 1px solid #999999;
-    text-align: center;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    padding: 17px;
-}
-
-.impuesto-table,
-.user-table {
-    border-collapse: collapse;
-}
-
-.impuesto-table th {
-    background-color: #c7c7c7;
-    font-weight: bold;
-    color: #555;
-}
-
-.impuesto-table td {
-    background-color: #e7e7e7;
-    font-weight: bold;
-    color: #555;
-}
-
-.user-table th, .user-table td {
-    font-size: 14px;
-    width: 100%;
-    border: 1px solid #cdcdcd;
-    text-align: center;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    padding: 12.2px;
-}
-
-.user-table th {
-    background-color: #eaeaea;
-    font-weight: bold;
-    color: #555;
-}
-
-.user-table td input{
-    width: 50%;
-    background-color: transparent !important;
-    padding: 10px;
-    border: none;
-    outline: none;
-    font-size: 14px;
-}
-
-
 .guardar-button {
     background-color: #99bada;
     color: whitesmoke;
@@ -108,7 +42,8 @@ main {
     font-size: 1rem;
     transition: background-color 0.3s;
     cursor: pointer;
-    margin: 50px;
+    margin-top: 30px;
+    margin-bottom: 28px;
 }
 
 .guardar-button:hover {
@@ -122,4 +57,29 @@ main {
     background: #b8b8b8;
     border: 0;
     border-radius: 0;
+}
+
+.id-inputs{
+    margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+}
+
+.id-inputs input{
+    padding: 0.75rem;
+    width: 100%;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #939393;
+    box-sizing: border-box;
+}
+
+.id-inputs label{
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #8b8b8b;
 }

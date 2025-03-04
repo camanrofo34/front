@@ -1,34 +1,3 @@
-/* 🔹====================================🔹 */
-/*          🎨 ESTILOS DEL MODAL          */
-/* 🔹====================================🔹 */
-
-/* ✅ Fondo oscuro al abrir el modal */
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* 🔥 Oscurece el fondo */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000; /* 🔥 Se asegura de que esté por encima de todo */
-}
-
-/* ✅ Diseño del modal */
-.modal-content {
-    background-color: white;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    width: 90%;
-    max-width: 500px;
-    text-align: center;
-    position: relative;
-    z-index: 1001; /* 🔥 Se asegura de que esté sobre el overlay */
-}
-
 /* ✅ Input bonito */
 .input-group {
     margin-bottom: 1rem;
@@ -79,4 +48,37 @@
 
 .cancel-button:hover {
     background-color: #d32f2f;
+}
+
+.vehicle-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.5rem;
+    table-layout: fixed;
+    width: 100%;
+}
+
+.vehicle-table th, .vehicle-table td {
+    font-size: 12px;
+    border: 1px solid #cdcdcd;
+    text-align: center;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.vehicle-table th {
+    background-color: #eaeaea;
+    font-weight: bold;
+    color: #555;
+    padding: 5px;
+}
+
+.vehicle-table td button {
+    padding: 0.5rem;
+    margin: 0.5rem;
+    width: 80%;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }

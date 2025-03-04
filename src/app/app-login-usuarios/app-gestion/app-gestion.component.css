@@ -32,6 +32,7 @@ main {
     justify-content: flex-start;
     align-items: center;
     width: 100%;
+    gap: 20px;
 }
 
 .search-bar input {
@@ -60,10 +61,10 @@ main {
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
     cursor: pointer;
+    margin-left: -20px;
     width: 15%;
     font-size: 1rem;
     transition: background-color 0.3s;
-    margin-left: 0;
 }
 
 .search-bar button:hover {
@@ -95,4 +96,23 @@ main {
     background: #b8b8b8;
     border: 0;
     border-radius: 0;
+}
+
+.logout-container button{
+    width: 14%;
+    background-color: #bdbdbd;
+    color: white;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1rem;
+    margin-top: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-bottom: 28px;
+}
+
+.logout-container button:hover{
+    background-color: rgb(123, 123, 123);
 }

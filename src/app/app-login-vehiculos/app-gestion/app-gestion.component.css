@@ -1,61 +1,68 @@
-/* 🔹 Centrar la vista en la pantalla */
 main {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* Ocupar toda la pantalla */
-    background-color: #f8f9fa; /* Color de fondo opcional */
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+    width: 100%; /* Asegurar que ocupe todo el ancho */
 }
 
-/* 🔹 Contenedor principal */
 .management-container {
     background-color: white;
-    padding: 3rem;
-    border-radius: 8px;
+    padding: 4rem;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 800px;
+    max-width: 1000px;
     display: flex;
+    margin-top: 70px;
+    margin-bottom: 40px;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
 }
 
-/* 🔹 Título */
 .management-container h2 {
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.2rem;
     font-size: 2.5rem;
     color: #555;
-    text-align: center;
+    text-align: justify;
     border-bottom: 1px solid #b8b8b8;
-    padding-bottom: 1rem;
-    width: 100%;
+    margin-top: 0rem;
 }
 
-/* 🔹 Barra de búsqueda */
 .search-bar {
+    margin-bottom: 0.5rem;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     width: 100%;
-    gap: 10px; /* Espaciado entre input y botón */
+    gap: 20px;
 }
 
 .search-bar input {
     padding: 0.75rem;
-    width: 70%;
+    width: 100%;
     font-size: 1rem;
+    border-right: none !important;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
     border: 1px solid #939393;
-    border-radius: 5px;
+    box-sizing: border-box;
 }
 
-/* 🔹 Botón de búsqueda */
+.search-bar label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #8b8b8b;
+}
+
 .search-bar button {
     padding: 0.75rem 1.5rem;
     background-color: #99bada;
     color: white;
-    border: none;
-    border-radius: 5px;
+    border: 1px solid #99bada;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
     cursor: pointer;
+    margin-left: -20px;
+    width: 15%;
     font-size: 1rem;
     transition: background-color 0.3s;
 }
@@ -64,20 +71,48 @@ main {
     background-color: #738ca5;
 }
 
-/* 🔹 Botón para agregar un nuevo vehículo */
-.add-user-button {
-    width: 50%;
+.add-user-button{
+    width: 16%;
     background-color: #99bada;
     color: white;
     border: none;
     padding: 0.75rem;
     border-radius: 5px;
+    text-decoration: none;
     font-size: 1rem;
     margin-top: 1rem;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
-.add-user-button:hover {
+.add-user-button:hover{
     background-color: #738ca5;
+}
+
+.rectangle{
+    width: 100%;
+    height: 0.5px;
+    margin-top: 1.9rem;
+    background: #b8b8b8;
+    border: 0;
+    border-radius: 0;
+}
+
+.logout-container button{
+    width: 14%;
+    background-color: #bdbdbd;
+    color: white;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1rem;
+    margin-top: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-bottom: 28px;
+}
+
+.logout-container button:hover{
+    background-color: rgb(123, 123, 123);
 }

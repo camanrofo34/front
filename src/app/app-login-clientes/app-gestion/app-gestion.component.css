@@ -1,81 +1,156 @@
-/* Estilos generales para el contenedor principal */
-.container {
-    display: flex; 
+main.container {
+    display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Ocupa toda la altura de la pantalla */
-    background-color: #86cecb; 
+    width: 100%;
 }
 
-/* Caja de contenido donde se muestra la lista */
 .content-box {
-    width: 50rem; /* Ancho de la caja */
-    padding: 20px;
-    background-color: #f8f8f8; /* Fondo gris azulado */
-    border-radius: 10px; /* Bordes redondeados */
-    text-align: left; /* Alineación del texto a la izquierda */
+    background-color: white;
+    padding: 4rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    max-width: 1000px;
+    display: flex;
+    margin-top: 70px;
+    margin-bottom: 40px;
+    flex-direction: column;
 }
 
-/* Título principal de la lista */
-h2 {
-    margin-bottom: 10px; /* Espaciado inferior */
+.content-box h2 {
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.2rem;
+    font-size: 2.5rem;
+    color: #555;
+    text-align: justify;
+    border-bottom: 1px solid #b8b8b8;
+    margin-top: 0rem;
 }
 
-/* Barra de búsqueda */
-.search-bar {
-    width: 100%; /* Ocupar todo el ancho disponible */
-    padding: 8px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
+.search-group {
+    margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+}
+
+.search-group input {
+    padding: 0.75rem;
+    width: 100%;
+    font-size: 1rem;
+    border-right: none !important;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border: 1px solid #939393;
+    box-sizing: border-box;
+}
+
+.search-group button {
+    padding: 0.75rem 1.5rem;
+    background-color: #99bada;
+    color: white;
+    border: 1px solid #99bada;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    cursor: pointer;
+    margin-left: -20px;
+    width: 15%;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.search-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #8b8b8b;
+}
+
+.search-group button:hover {
+    background-color: #738ca5;
+}
+
+.add-user-button {
+    width: 16%;
+    background-color: #99bada;
+    color: white;
+    border: none;
+    padding: 0.75rem;
     border-radius: 5px;
+    text-decoration: none;
+    font-size: 1rem;
+    margin-top: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-/* Tabla de usuarios */
+.add-user-button:hover {
+    background-color: #738ca5;
+}
+
 .user-table {
-    width: 100%; /* Ocupar todo el ancho de la caja */
-    border-collapse: collapse; /* Elimina el espacio entre bordes */
-    background: white; /* Fondo blanco */
-    border-radius: 5px; /* Bordes redondeados */
-    overflow: hidden; /* Evita que los bordes redondeados se corten */
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.5rem;
+    table-layout: fixed;
+    width: 100%;
 }
 
-/* Encabezados de la tabla */
+.user-table th, .user-table td {
+    font-size: 12px;
+    border: 1px solid #cdcdcd;
+    text-align: center;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    padding: 0.5rem;
+}
+
 .user-table th {
-    background-color: #5a9; /* Fondo verde */
-    color: white; /* Texto blanco */
-    padding: 10px;
-    border: 1px solid #ddd; /* Bordes suaves */
-    text-align: left;
+    background-color: #eaeaea;
+    font-weight: bold;
+    color: #555;
 }
 
-/* Celdas de la tabla */
-.user-table td {
-    padding: 10px;
-    border: 1px solid #ddd;
-    text-align: left;
-}
-
-/* Botones de acción (Agregar y Eliminar)  */
-.btn {
-    padding: 5px 10px;
+.user-table td button {
+    padding: 0.5rem;
+    margin: 0.5rem;
+    width: 80%;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-/* Estilos específicos para el botón de Agregar */
-.agregar {
-    background-color: #4CAF50; /* Verde */
-    color: white;
-}
-
-/* Estilos específicos para el botón de Eliminar */
 .modificar {
-    background-color: #e09c09; 
+    background-color: #f8b400;
     color: white;
 }
 
-/* Efecto hover para los botones */
-.btn:hover {
-    opacity: 0.8;
+.modificar:hover {
+    background-color: #f08d00;
+}
+
+.logout-container {
+    display: flex;
+    margin-bottom: 1rem;
+}
+
+.logout-button {
+    width: 14%;
+    background-color: #bdbdbd;
+    color: white;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1rem;
+    margin-top: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-bottom: 25px;
+}
+
+.logout-button:hover {
+    background-color: rgb(123, 123, 123);
 }
