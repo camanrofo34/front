@@ -17,6 +17,7 @@ import { RegistroComponentVehiculos } from './app-login-vehiculos/app-register/a
 import { SampleCustomerComponent } from './app-promocion-vehiculos/app-promocion.component';
 import { LoginComponentOrdenCompra } from './app-orden-compra/app-login.component';
 import { AppOrdencComponent } from './app-orden-compra/app-ordenc/app-ordenc.component';
+import { AppImpuestosComponent } from './app-impuestos/app-impuestos.component';
 
 const routeConfig: Routes = [
   {
@@ -82,6 +83,10 @@ const routeConfig: Routes = [
   {
     path: 'ordenCompra/venta',
     component: AppOrdencComponent
+  },
+  {
+    path: 'impuestos', 
+    component: AppImpuestosComponent
   }
 ];
 

@@ -5,13 +5,25 @@ import { VehiculoService } from '../../services/vehiculos.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
+/**
+ * @class RegistroComponentVehiculos
+ * @description Componente para registrar un nuevo vehículo en el sistema.  
+ * Incluye validaciones en el formulario antes de enviar los datos al servicio.
+ *
+ * @author Tu Nombre <tuemail@example.com>
+ */
 @Component({
-  selector: 'app-registro-vehiculo',
-  templateUrl: './app-register.component.html',
-  styleUrls: ['./app-register.component.css'],
-  imports: [FormsModule, CommonModule, RouterModule]
+  selector: 'app-registro-vehiculo', // Selector del componente
+  templateUrl: './app-register.component.html', // Ruta del archivo de plantilla HTML
+  styleUrls: ['./app-register.component.css'], // Ruta del archivo de estilos CSS
+  imports: [FormsModule, CommonModule, RouterModule] // Módulos necesarios para el formulario y rutas
 })
 export class RegistroComponentVehiculos {
+
+  /**
+   * Objeto que almacena los datos del vehículo a registrar.
+   * @type {Vehiculo}
+   */
   vehicle: Vehiculo = {
     idVehiculo: 0,
     nombre: '',
@@ -20,31 +32,57 @@ export class RegistroComponentVehiculos {
     modelo: '',
     stock: 0,
     precio: 0
-  }; // Objeto para almacenar los datos del vehículo
+  };
 
+  /**
+   * @constructor
+   * @param {VehiculoService} vehiculoService - Servicio para gestionar vehículos.
+   * @param {Router} router - Servicio de enrutamiento para redirigir después del registro.
+   */
   constructor(
-    private vehiculoService: VehiculoService, // Inyecta el servicio VehiculoService
-    private router: Router // Inyecta el Router para redirigir
+    private vehiculoService: VehiculoService,
+    private router: Router
   ) {}
 
-
-  // Método para validar el formulario
+  /**
+   * @method validarRequeridos
+   * @description Valida que los campos obligatorios no estén vacíos.
+   * @returns {boolean} Retorna `true` si algún campo obligatorio está vacío, de lo contrario `false`.
+   */
   validarRequeridos(): boolean {
-    return this.vehicle.nombre.trim() === '' || this.vehicle.descripcion.trim() === '' || this.vehicle.modelo.trim() === '' || this.vehicle.stock === 0 || this.vehicle.precio === 0;
+    return this.vehicle.nombre.trim() === '' || 
+           this.vehicle.descripcion.trim() === '' || 
+           this.vehicle.modelo.trim() === '' || 
+           this.vehicle.stock === 0 || 
+           this.vehicle.precio === 0;
   }
 
-  // Método para validar el precio
+  /**
+   * @method validarPrecio
+   * @description Valida que el precio del vehículo sea mayor a 0.
+   * @param {number} precio - Precio ingresado para el vehículo.
+   * @returns {boolean} Retorna `true` si el precio es mayor a 0, de lo contrario `false`.
+   */
   validarPrecio(precio: number): boolean {
     return precio > 0;
   }
 
-  // Método para validar el stock
+  /**
+   * @method validarStock
+   * @description Valida que el stock del vehículo sea mayor a 0.
+   * @param {number} stock - Cantidad en stock del vehículo.
+   * @returns {boolean} Retorna `true` si el stock es mayor a 0, de lo contrario `false`.
+   */
   validarStock(stock: number): boolean {
     return stock > 0;
   }
 
-
-  // Método para registrar el vehículo
+  /**
+   * @method registerVehicle
+   * @description Valida los datos ingresados y, si son correctos, envía la solicitud para registrar el vehículo.
+   * En caso de éxito, redirige a la lista de vehículos.
+   * @returns {void}
+   */
   registerVehicle(): void {
     if (this.validarRequeridos()){
       alert('Todos los campos son requeridos.');
@@ -58,6 +96,7 @@ export class RegistroComponentVehiculos {
       alert('El stock debe ser mayor a 0.');
       return;
     }
+
     this.vehiculoService.crearVehiculo(this.vehicle).subscribe({
       next: (response) => {
         console.log('Vehículo registrado:', response);
@@ -70,8 +109,12 @@ export class RegistroComponentVehiculos {
     });
   }
 
-  // Método para redirigir a la lista de vehículos
+  /**
+   * @method irAListaVehiculos
+   * @description Redirige a la lista de vehículos después del registro exitoso.
+   * @returns {void}
+   */
   irAListaVehiculos(): void {
-    this.router.navigate(['/vehiculos/gestion']); // Redirigir a la lista de vehículos
+    this.router.navigate(['/vehiculos/gestion']);
   }
 }

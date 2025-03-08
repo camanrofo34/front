@@ -1,0 +1,16 @@
+<main>
+    <div class="impuestos-container">
+      <h2>Dar de Baja Impuesto</h2>
+      <!-- Usa (ngSubmit) para manejar el envío del formulario -->
+      <form id="impuestos-form" (ngSubmit)="onSubmit()">
+        <div class="input-group">
+          <label for="impuestoId">ID del Impuesto</label>
+          <!-- Vincula el input con una propiedad del componente usando [(ngModel)] -->
+          <input type="text" id="impuestoId" name="impuestoId" [(ngModel)]="impuestoId" required>
+        </div>
+        <!-- Botón de envío del formulario -->
+        <button type="submit" class="impuestos-button">Dar de Baja</button>
+      </form>
+    </div>
+  </main>
+  

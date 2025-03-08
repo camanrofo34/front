@@ -1,38 +1,59 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoginServiceService } from '../services/login-service.service'; // Importa el servicio
-import { CommonModule } from '@angular/common'; // Importa CommonModule
-import { FormsModule } from '@angular/forms'; // Importa FormsModule para ngModel
-import { HttpClientModule } from '@angular/common/http'; // Importa HttpClientModule para el servicio
+import { LoginServiceService } from '../services/login-service.service'; // Servicio de autenticación
+import { CommonModule } from '@angular/common'; // Módulo común de Angular
+import { FormsModule } from '@angular/forms'; // Módulo para trabajar con formularios y ngModel
+import { HttpClientModule } from '@angular/common/http'; // Módulo para manejar solicitudes HTTP
 
+/**
+ * @class LoginComponentUsers
+ * @description Componente de inicio de sesión para usuarios administradores.
+ */
 @Component({
-  selector: 'app-login',
-  standalone: true, // Marca el componente como standalone
-  imports: [CommonModule, FormsModule, HttpClientModule], // Importa los módulos necesarios
+  selector: 'app-login', // Selector del componente
+  standalone: true, // Indica que este componente es independiente
+  imports: [CommonModule, FormsModule, HttpClientModule], // Importación de módulos necesarios
   templateUrl: './app-login.component.html', // Ruta al archivo HTML
-  styleUrls: ['./app-login.component.css'] // Ruta al archivo CSS (si lo tienes)
+  styleUrls: ['./app-login.component.css'] // Ruta al archivo de estilos CSS
 })
 export class LoginComponentUsers {
-  username: string = ''; // Propiedad para el nombre de usuario
-  password: string = ''; // Propiedad para la contraseña
 
+  /**
+   * Propiedad que almacena el nombre de usuario.
+   * @type {string}
+   */
+  username: string = '';
+
+  /**
+   * Propiedad que almacena la contraseña del usuario.
+   * @type {string}
+   */
+  password: string = '';
+
+  /**
+   * @constructor
+   * @param {LoginServiceService} loginService - Servicio para autenticar al usuario.
+   * @param {Router} router - Servicio de enrutamiento para redirigir después del login.
+   */
   constructor(
-    private loginService: LoginServiceService, // Inyecta el servicio de login
-    private router: Router // Inyecta el Router para redireccionar
+    private loginService: LoginServiceService,
+    private router: Router
   ) {}
 
-  // Método que se ejecuta al enviar el formulario
+  /**
+   * @method onSubmit
+   * @description Método que se ejecuta cuando el usuario envía el formulario.
+   * Llama al servicio de autenticación y redirige al usuario si es exitoso.
+   * @returns {void}
+   */
   onSubmit(): void {
-    // Llama al servicio de login para autenticar al usuario
     this.loginService.loginAdminUsuarios(this.username, this.password).subscribe({
-      next: (response) => {
-        // Redirige al usuario a la página de gestión después del login exitoso
-        this.router.navigate(['/usuarios/gestion']);
+      next: () => {
+        this.router.navigate(['/usuarios/gestion']); // Redirige a la gestión de usuarios
       },
       error: (error) => {
-        console.error('Login failed', error);
-        // Muestra un mensaje de error al usuario (puedes usar un toast o alert)
-        alert('Usuario o contraseña incorrectos');
+        console.error('Login fallido:', error);
+        alert('Usuario o contraseña incorrectos'); // Muestra un mensaje de error
       }
     });
   }

@@ -1,19 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import { Usuario } from '../../domain/usuario.model';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { ActivatedRoute, RouterModule, Router } from '@angular/router';
 import { UsuariosService } from '../../services/usuarios.service';
-import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
+/**
+ * @class ModifyComponentUsers
+ * @description Componente para modificar los datos de un usuario existente.
+ */
 @Component({
-  selector: 'app-app-modify',
-  imports: [RouterModule, FormsModule, CommonModule],
-  templateUrl: './app-modify.component.html',
-  styleUrl: './app-modify.component.css'
+  selector: 'app-app-modify', // Selector del componente
+  imports: [RouterModule, FormsModule, CommonModule], // Módulos necesarios
+  templateUrl: './app-modify.component.html', // Ruta al HTML del componente
+  styleUrls: ['./app-modify.component.css'] // Ruta a los estilos CSS
 })
+export class ModifyComponentUsers implements OnInit {
 
-export class ModifyComponentUsers implements OnInit{
+  /**
+   * @property usuario
+   * @description Objeto que almacena los datos del usuario a modificar.
+   * @type {Usuario}
+   */
   usuario: Usuario = {
     idUsuario: 0,
     nombreCompleto: '',
@@ -22,32 +30,52 @@ export class ModifyComponentUsers implements OnInit{
     cedula: '',
     direccion: '',
     telefono: '',
-    rol: 'RECEPCION', // Valor por defecto
+    rol: 'RECEPCION', // Rol por defecto
     estado: 'ACTIVO' // Estado por defecto
-  }; // Inicializa el objeto usuario con valores por defecto // Objeto para almacenar los datos del usuario
-  idUsuario: number | null = null; // Variable para almacenar el idUsuario
+  };
 
+  /**
+   * @property idUsuario
+   * @description Identificador del usuario que se modificará.
+   * @type {number | null}
+   */
+  idUsuario: number | null = null;
+
+  /**
+   * @constructor
+   * @param {ActivatedRoute} route - Servicio para capturar parámetros de la ruta.
+   * @param {UsuariosService} usuariosService - Servicio para manejar usuarios.
+   * @param {Router} router - Servicio de enrutamiento.
+   */
   constructor(
-    private route: ActivatedRoute, // Servicio para capturar parámetros de la ruta
-    private usuariosService: UsuariosService, // Servicio para obtener los datos del usuario
-    private router: Router // Servicio para redirigir a otras páginas
+    private route: ActivatedRoute,
+    private usuariosService: UsuariosService,
+    private router: Router
   ) {}
 
+  /**
+   * @method ngOnInit
+   * @description Método de inicialización del componente.
+   * Captura el parámetro de la URL y carga los datos del usuario si existe.
+   */
   ngOnInit(): void {
-    // Capturar el parámetro idUsuario de la URL
-    this.idUsuario = +this.route.snapshot.paramMap.get('idUsuario')!;
+    const idParam = this.route.snapshot.paramMap.get('idUsuario');
+    this.idUsuario = idParam ? +idParam : null;
 
-    // Si el idUsuario es válido, cargar los datos del usuario
     if (this.idUsuario) {
       this.cargarUsuario(this.idUsuario);
     }
   }
 
-  // Método para cargar los datos del usuario
+  /**
+   * @method cargarUsuario
+   * @description Carga los datos del usuario desde el servicio.
+   * @param {number} idUsuario - ID del usuario a modificar.
+   */
   cargarUsuario(idUsuario: number): void {
     this.usuariosService.buscarUsuarioPorId(idUsuario).subscribe({
       next: (data) => {
-        this.usuario = data; // Asignar los datos del usuario
+        this.usuario = data;
       },
       error: (error) => {
         console.error('Error al cargar usuario:', error);
@@ -55,12 +83,16 @@ export class ModifyComponentUsers implements OnInit{
     });
   }
 
+  /**
+   * @method onSubmit
+   * @description Envía la información actualizada del usuario al backend.
+   */
   onSubmit(): void {
     if (this.usuario && this.idUsuario) {
       this.usuariosService.actualizarUsuario(this.idUsuario, this.usuario).subscribe({
         next: () => {
           console.log('Usuario actualizado correctamente');
-          this.router.navigate(['/usuarios/gestion']); // Redirigir a la página de gestión
+          this.router.navigate(['/usuarios/gestion']); // Redirigir a la gestión de usuarios
         },
         error: (error) => {
           console.error('Error al actualizar usuario:', error);
@@ -68,5 +100,5 @@ export class ModifyComponentUsers implements OnInit{
         }
       });
     }
-}
+  }
 }
