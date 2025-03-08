@@ -1,4 +1,8 @@
 
+/*
+ * This CSS class is used to center the content within its parent container.
+ * It applies flexbox properties to achieve the desired layout.
+ */
 .container {
     display: flex;
     justify-content: center;
@@ -7,13 +11,9 @@
 }
 
 /*
-POPIPOPIPOPOPIPO 
-POPIPOPIPOPOPIPO 
-POPIPOPIPOPOPIPO 
-POPIPOPIPOPOPIPO 
-POPIPOPIPOPOPIPO 
-*/
-
+ * This CSS class represents the main content box on the page.
+ * It includes styling for background color, padding, box shadow, width, and layout properties.
+ */
 .content-box {
     background-color: white;
     padding: 5rem;
@@ -27,13 +27,9 @@ POPIPOPIPOPOPIPO
 }
 
 /*
-POPIPOPIPOPOPIPO 
-POPIPOPIPOPOPIPO 
-POPIPOPIPOPOPIPO 
-POPIPOPIPOPOPIPO 
-POPIPOPIPOPOPIPO 
-*/
-
+ * This CSS rule targets the h2 elements within the content-box class.
+ * It includes styling for bottom margin, border, padding, font size, text alignment, and color.
+ */
 .content-box h2 {
     margin-bottom: 1.7rem;
     border-bottom: 1.5px solid #b8b8b8;
@@ -43,6 +39,10 @@ POPIPOPIPOPOPIPO
     color: #555;
 }
 
+/*
+ * This CSS class represents a card for displaying vehicle information.
+ * It includes styling for background color, padding, margin, border radius, and text alignment.
+ */
 .vehicle-card {
     background-color: #f4f4f4;
     padding: 15px;
@@ -51,6 +51,10 @@ POPIPOPIPOPOPIPO
     text-align: left;
 }
 
+/*
+ * This CSS rule targets the h3 elements within the vehicle-card class.
+ * It includes styling for bottom border, padding, margin, and color.
+ */
 .vehicle-card h3 {
     border-bottom: 1.5px solid #b8b8b8;
     padding-bottom: 0.7rem;
@@ -58,16 +62,28 @@ POPIPOPIPOPOPIPO
     color: #555;
 }
 
+/*
+ * This CSS rule targets the strong elements within the vehicle-card class.
+ * It includes styling for bottom margin and color.
+ */
 .vehicle-card strong {
     margin-bottom: 10px;
     color: #555;
 }
 
+/*
+ * This CSS rule targets the p elements within the vehicle-card class.
+ * It includes styling for bottom margin and color.
+ */
 .vehicle-card p {
     margin-bottom: 10px;
     color: #838383;
 }
 
+/*
+ * This CSS class represents a form container.
+ * It includes styling for margin, padding, background color, border radius, and text alignment.
+ */
 .form-container {
     margin-top: 20px;
     padding: 15px;
@@ -76,6 +92,10 @@ POPIPOPIPOPOPIPO
     text-align: left;
 }
 
+/*
+ * This CSS rule targets the input elements within the form-container class.
+ * It includes styling for width, padding, bottom margin, and border radius.
+ */
 .form-container input {
     width: 100%;
     padding: 5px;
@@ -83,6 +103,10 @@ POPIPOPIPOPOPIPO
     border-radius: 5px;
 }
 
+/*
+ * This CSS class represents the add button within the form container.
+ * It includes styling for background color, color, border, padding, cursor, and border radius.
+ */
 .add-button {
     background-color: #4CAF50;
     color: white;

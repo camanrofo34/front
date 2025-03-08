@@ -7,7 +7,8 @@ import { CommonModule } from '@angular/common';
 
 /**
  * @class ModifyComponentUsers
- * @description Componente para modificar los datos de un usuario existente.
+ * @description 
+ * Componente para modificar los datos de un usuario existente.
  */
 @Component({
   selector: 'app-app-modify', // Selector del componente
@@ -19,7 +20,8 @@ export class ModifyComponentUsers implements OnInit {
 
   /**
    * @property usuario
-   * @description Objeto que almacena los datos del usuario a modificar.
+   * @description 
+   * Objeto que almacena los datos del usuario a modificar.
    * @type {Usuario}
    */
   usuario: Usuario = {
@@ -36,7 +38,8 @@ export class ModifyComponentUsers implements OnInit {
 
   /**
    * @property idUsuario
-   * @description Identificador del usuario que se modificará.
+   * @description 
+   * Identificador del usuario que se modificará.
    * @type {number | null}
    */
   idUsuario: number | null = null;
@@ -55,7 +58,8 @@ export class ModifyComponentUsers implements OnInit {
 
   /**
    * @method ngOnInit
-   * @description Método de inicialización del componente.
+   * @description 
+   * Método de inicialización del componente.
    * Captura el parámetro de la URL y carga los datos del usuario si existe.
    */
   ngOnInit(): void {
@@ -69,7 +73,8 @@ export class ModifyComponentUsers implements OnInit {
 
   /**
    * @method cargarUsuario
-   * @description Carga los datos del usuario desde el servicio.
+   * @description 
+   * Carga los datos del usuario desde el servicio.
    * @param {number} idUsuario - ID del usuario a modificar.
    */
   cargarUsuario(idUsuario: number): void {
@@ -85,7 +90,8 @@ export class ModifyComponentUsers implements OnInit {
 
   /**
    * @method onSubmit
-   * @description Envía la información actualizada del usuario al backend.
+   * @description 
+   * Envía la información actualizada del usuario al backend.
    */
   onSubmit(): void {
     if (this.usuario && this.idUsuario) {

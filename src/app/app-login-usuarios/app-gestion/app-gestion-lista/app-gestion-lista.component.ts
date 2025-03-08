@@ -5,7 +5,8 @@ import { UsuariosService } from '../../../services/usuarios.service';
 
 /**
  * @class GestionListaComponentUsers
- * @description Componente para la gestión y listado de usuarios.
+ * @description 
+ * Componente para la gestión y listado de usuarios.
  */
 @Component({
   selector: 'app-gestion-lista',
@@ -16,13 +17,15 @@ export class GestionListaComponentUsers implements OnInit {
 
   /**
    * @property usuariosFiltrados
-   * @description Lista de usuarios que se muestran en la tabla.
+   * @description 
+   * Lista de usuarios que se muestran en la tabla.
    */
   @Input() usuariosFiltrados: Usuario[] = [];
 
   /**
    * @property usuarioActualizado
-   * @description Evento que se emite cuando se actualiza o elimina un usuario.
+   * @description 
+   * Evento que se emite cuando se actualiza o elimina un usuario.
    */
   @Output() usuarioActualizado = new EventEmitter<void>();
 
@@ -42,7 +45,8 @@ export class GestionListaComponentUsers implements OnInit {
 
   /**
    * @method modificarUsuario
-   * @description Navega a la página de modificación de usuario.
+   * @description 
+   * Navega a la página de modificación de usuario.
    * @param {number} idUsuario - ID del usuario a modificar.
    */
   modificarUsuario(idUsuario: number): void {
@@ -51,7 +55,8 @@ export class GestionListaComponentUsers implements OnInit {
 
   /**
    * @method cambiarEstadoUsuario
-   * @description Cambia el estado de un usuario (ACTIVO/INACTIVO).
+   * @description 
+   * Cambia el estado de un usuario (ACTIVO/INACTIVO).
    * @param {number} idUsuario - ID del usuario.
    * @param {string} nuevoEstado - Nuevo estado del usuario.
    */
@@ -69,7 +74,8 @@ export class GestionListaComponentUsers implements OnInit {
 
   /**
    * @method eliminarUsuario
-   * @description Elimina un usuario después de confirmar la acción.
+   * @description 
+   * Elimina un usuario después de confirmar la acción.
    * @param {number} idUsuario - ID del usuario a eliminar.
    */
   eliminarUsuario(idUsuario: number): void {

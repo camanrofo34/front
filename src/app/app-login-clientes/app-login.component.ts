@@ -6,25 +6,28 @@ import { LoginServiceService } from '../services/login-service.service';
 
 /**
  * @class LoginComponentClientes
- * @description Componente de login para clientes.
+ * @description 
+ * Componente de login para clientes.
  */
 @Component({
   selector: 'app-app-login',
   imports: [CommonModule, RouterModule, FormsModule],
   templateUrl: './app-login.component.html',
-  styleUrl: './app-login.component.css'
+  styleUrls: ['./app-login.component.css']
 })
 export class LoginComponentClientes {
   
   /**
    * @property username
-   * @description Nombre de usuario ingresado por el cliente.
+   * @description 
+   * Nombre de usuario ingresado por el cliente.
    */
   username: string = '';
 
   /**
    * @property password
-   * @description Contraseña ingresada por el cliente.
+   * @description 
+   * Contraseña ingresada por el cliente.
    */
   password: string = '';
 
@@ -40,7 +43,8 @@ export class LoginComponentClientes {
 
   /**
    * @method onSubmit
-   * @description Maneja el envío del formulario de login.
+   * @description 
+   * Maneja el envío del formulario de login.
    */
   onSubmit(): void {
     this.loginService.loginAdminRecepcion(this.username, this.password).subscribe({

@@ -8,7 +8,8 @@ import { GestionListaComponentUsers } from './app-gestion-lista/app-gestion-list
 
 /**
  * @class GestionComponentUsers
- * @description Componente para gestionar usuarios en el sistema.
+ * @description 
+ * Componente para gestionar usuarios en el sistema.
  */
 @Component({
   selector: 'app-gestion', // Selector del componente
@@ -21,19 +22,22 @@ export class GestionComponentUsers implements OnInit {
   
   /**
    * @property searchTerm
-   * @description Término de búsqueda por nombre de usuario.
+   * @description 
+   * Término de búsqueda por nombre de usuario.
    */
   searchTerm: string = '';
 
   /**
    * @property usuariosFiltrados
-   * @description Lista de usuarios filtrados a mostrar.
+   * @description 
+   * Lista de usuarios filtrados a mostrar.
    */
   usuariosFiltrados: Usuario[] = [];
 
   /**
    * @property searchId
-   * @description ID del usuario que se busca por número.
+   * @description 
+   * ID del usuario que se busca por número.
    */
   searchId: number | null = null;
 
@@ -49,7 +53,8 @@ export class GestionComponentUsers implements OnInit {
 
   /**
    * @method ngOnInit
-   * @description Se ejecuta al iniciar el componente y carga los usuarios.
+   * @description 
+   * Se ejecuta al iniciar el componente y carga los usuarios.
    */
   ngOnInit(): void {
     this.cargarUsuarios();
@@ -57,7 +62,8 @@ export class GestionComponentUsers implements OnInit {
 
   /**
    * @method cargarUsuarios
-   * @description Carga la lista completa de usuarios desde el servicio.
+   * @description 
+   * Carga la lista completa de usuarios desde el servicio.
    */
   cargarUsuarios(): void {
     this.usuariosService.listarUsuarios().subscribe({
@@ -72,7 +78,8 @@ export class GestionComponentUsers implements OnInit {
 
   /**
    * @method buscarUsuarios
-   * @description Busca usuarios por nombre de usuario.
+   * @description 
+   * Busca usuarios por nombre de usuario.
    */
   buscarUsuarios(): void {
     const termino = this.searchTerm.trim();
@@ -93,7 +100,8 @@ export class GestionComponentUsers implements OnInit {
 
   /**
    * @method buscarUsuarioPorId
-   * @description Busca un usuario por su ID.
+   * @description 
+   * Busca un usuario por su ID.
    */
   buscarUsuarioPorId(): void {
     if (this.searchId === null) {
@@ -113,7 +121,8 @@ export class GestionComponentUsers implements OnInit {
 
   /**
    * @method cerrarSesion
-   * @description Cierra la sesión del usuario y redirige a la página de inicio.
+   * @description 
+   * Cierra la sesión del usuario y redirige a la página de inicio.
    */
   cerrarSesion(): void {
     localStorage.clear();

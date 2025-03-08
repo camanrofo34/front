@@ -7,46 +7,44 @@ import { Router, RouterModule } from '@angular/router';
 import { GestionListaVehiculosComponent } from "./app-gestion-lista/app-gestion-lista.component";
 
 /**
- * @class GestionVehiculosComponent
- * @description Componente encargado de la gestión de vehículos.  
+ * Componente encargado de la gestión de vehículos.
  * Permite listar, buscar por nombre y buscar por ID, además de manejar la sesión del usuario.
+ * @class GestionComponentVehiculos
+ * @component GestionComponentVehiculos
+ * @style ./app-gestion.component.css
  */
 @Component({
-  selector: 'app-gestion-vehiculos', // Selector del componente
-  templateUrl: './app-gestion.component.html', // Ruta de la plantilla HTML
-  styleUrls: ['./app-gestion.component.css'], // Ruta del archivo de estilos
+  selector: 'app-gestion-vehiculos', // Selector del componente en el HTML
+  templateUrl: './app-gestion.component.html', // Archivo de plantilla asociado
+  styleUrls: ['./app-gestion.component.css'], // Archivo de estilos asociado
   imports: [GestionListaVehiculosComponent, FormsModule, CommonModule, RouterModule] // Módulos requeridos
 })
 export class GestionVehiculosComponent implements OnInit {
 
   /**
    * Término de búsqueda utilizado para filtrar vehículos por nombre.
-   * @type {string}
    */
   searchTerm: string = '';
 
   /**
    * Lista de vehículos filtrados según la búsqueda.
-   * @type {Vehiculo[]}
    */
   vehiculosFiltrados: Vehiculo[] = [];
 
   /**
    * Lista completa de vehículos obtenidos del servicio.
-   * @type {Vehiculo[]}
    */
   allVehiculos: Vehiculo[] = [];
 
   /**
-   * ID del vehículo a buscar (si aplica).
-   * @type {number | null}
+   * ID del vehículo a buscar.
    */
   searchId: number | null = null;
 
   /**
-   * @constructor
-   * @param {VehiculoService} vehiculoService - Servicio para gestionar vehículos.
-   * @param {Router} router - Servicio para la navegación entre rutas.
+   * Constructor del componente.
+   * @param vehiculoService Servicio para gestionar vehículos.
+   * @param router Servicio para la navegación entre rutas.
    */
   constructor(
     private vehiculoService: VehiculoService, 
@@ -54,19 +52,14 @@ export class GestionVehiculosComponent implements OnInit {
   ) {}
 
   /**
-   * @method ngOnInit
-   * @description Método de inicialización del componente.  
-   * Carga la lista de vehículos al iniciar.
-   * @returns {void}
+   * Inicializa el componente cargando la lista de vehículos.
    */
   ngOnInit(): void {
     this.cargarVehiculos();
   }
 
   /**
-   * @method cargarVehiculos
-   * @description Carga la lista completa de vehículos desde el servicio.
-   * @returns {void}
+   * Carga la lista completa de vehículos desde el servicio.
    */
   cargarVehiculos(): void {
     this.vehiculoService.listarVehiculos().subscribe({
@@ -81,10 +74,8 @@ export class GestionVehiculosComponent implements OnInit {
   }
 
   /**
-   * @method buscarVehiculos
-   * @description Filtra los vehículos por nombre utilizando el término de búsqueda.
+   * Filtra los vehículos por nombre utilizando el término de búsqueda.
    * Si no se introduce un nombre, se muestran todos los vehículos.
-   * @returns {void}
    */
   buscarVehiculos(): void {
     if (this.searchTerm.trim()) {
@@ -103,10 +94,8 @@ export class GestionVehiculosComponent implements OnInit {
   }
 
   /**
-   * @method buscarVehiculoPorId
-   * @description Busca un vehículo específico por su ID.
+   * Busca un vehículo específico por su ID.
    * Si no se proporciona un ID, se vuelve a listar todos los vehículos.
-   * @returns {void}
    */
   buscarVehiculoPorId(): void {
     if (this.searchId === null) {
@@ -125,10 +114,8 @@ export class GestionVehiculosComponent implements OnInit {
   }
 
   /**
-   * @method cerrarSesion
-   * @description Cierra la sesión del usuario eliminando los datos de almacenamiento local y de sesión.
+   * Cierra la sesión del usuario eliminando los datos de almacenamiento local y de sesión.
    * Luego, redirige a la página de clientes.
-   * @returns {void}
    */
   cerrarSesion(): void {
     localStorage.clear();

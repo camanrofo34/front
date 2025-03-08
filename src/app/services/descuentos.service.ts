@@ -6,39 +6,59 @@ import { ApiConfigService } from './api-config-service.service';
 import { Descuento } from '../domain/descuento.model';
 
 
+/**
+ * Servicio para gestionar los descuentos en la aplicación.
+ */
 @Injectable({
-    providedIn: 'root'
-  })
+  providedIn: 'root'
+})
 export class DescuentoService {
 
-    private apiUrl: string;
+  /**
+   * URL base de la API para los descuentos.
+   */
+  private apiUrl: string;
 
-    constructor(private http: HttpClient, 
-      private apiConfigService: ApiConfigService
-    ) {
-        this.apiUrl = `${apiConfigService.getApiUrl()}/descuentos`;
-     }
+  /**
+   * Constructor del servicio.
+   * @param http Cliente HTTP para realizar solicitudes a la API.
+   * @param apiConfigService Servicio de configuración de la API.
+   */
+  constructor(private http: HttpClient, 
+    private apiConfigService: ApiConfigService
+  ) {
+      this.apiUrl = `${apiConfigService.getApiUrl()}/descuentos`;
+   }
 
-      // Método para obtener el token JWT desde localStorage
+  /**
+   * Obtiene el token de autenticación almacenado en localStorage.
+   * @returns El token JWT como string.
+   */
   private getAuthToken(): string {
-    return localStorage.getItem('token') || '';
+      return localStorage.getItem('token') || '';
   }
-      
-      // Método para listar todos los clientes
-      listarDescuentos(): Observable<Descuento[]> {
-        const headers = new HttpHeaders({
-          'Authorization': `Bearer ${this.getAuthToken()}` // Incluye el token JWT
-        });
     
-        return this.http.get<Descuento[]>(this.apiUrl, { headers }).pipe(
-          catchError(this.handleError)
-        );
-      }
+  /**
+   * Lista todos los descuentos disponibles.
+   * @returns Un observable con un array de descuentos.
+   */
+  listarDescuentos(): Observable<Descuento[]> {
+      const headers = new HttpHeaders({
+        'Authorization': `Bearer ${this.getAuthToken()}` // Incluye el token JWT
+      });
 
+      return this.http.get<Descuento[]>(this.apiUrl, { headers }).pipe(
+        catchError(this.handleError)
+      );
+  }
 
-    // Manejo de errores
+  /**
+   * Manejo de errores en las solicitudes HTTP.
+   * @param error Objeto de error HTTP.
+   * @returns Un observable que lanza un error.
+   */
   private handleError(error: HttpErrorResponse): Observable<never> {
-    console.error('An error occurred:', error);
-    return throwError('Something bad happened; please try again later.');
+      console.error('An error occurred:', error);
+      return throwError('Something bad happened; please try again later.');
   }
 }

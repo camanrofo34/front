@@ -5,7 +5,8 @@ import { VehiculoService } from '../../../services/vehiculos.service';
 
 /**
  * @class GestionListaVehiculosComponent
- * @description Componente que gestiona la lista de vehículos filtrados.  
+ * @description 
+ * Componente que gestiona la lista de vehículos filtrados.  
  * Permite modificar y eliminar vehículos.
  */
 @Component({

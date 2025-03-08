@@ -7,25 +7,48 @@ import { OrdenCompraDTO } from '../domain/orden-compra-dto.model';
 import { OrdenCompra } from '../domain/orden-compra.model';
 
 
+/**
+ * Servicio para la gestión de órdenes de compra.
+ * 
+ * Este servicio permite crear órdenes de compra y manejar la comunicación con la API.
+ */
 @Injectable({
-    providedIn: 'root'
-  })
+  providedIn: 'root'
+})
 export class OrdenCompraService {
 
-    private apiUrl: string;
+  /**
+   * URL base de la API para las órdenes de compra.
+   */
+  private apiUrl: string;
 
-    constructor(private http: HttpClient, 
-      private apiConfigService: ApiConfigService
-    ) {
-        this.apiUrl = `${apiConfigService.getApiUrl()}/ordenescompra`;
-     }
+  /**
+   * Constructor del servicio.
+   * 
+   * @param http Cliente HTTP de Angular para realizar peticiones.
+   * @param apiConfigService Servicio de configuración para obtener la URL de la API.
+   */
+  constructor(private http: HttpClient, 
+    private apiConfigService: ApiConfigService
+  ) {
+      this.apiUrl = `${apiConfigService.getApiUrl()}/ordenescompra`;
+   }
 
-      // Método para obtener el token JWT desde localStorage
+  /**
+   * Obtiene el token JWT almacenado en localStorage.
+   * 
+   * @returns Token de autenticación como string.
+   */
   private getAuthToken(): string {
     return localStorage.getItem('token') || '';
   }
-      
-      // Método para listar todos los clientes
+    
+  /**
+   * Crea una nueva orden de compra en la API.
+   * 
+   * @param ordenCompraDTO Datos de la orden de compra.
+   * @returns Observable con la orden de compra creada.
+   */
   crearOrdenCompra(ordenCompraDTO: OrdenCompraDTO): Observable<OrdenCompra> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -37,8 +60,12 @@ export class OrdenCompraService {
     );
   }
 
-
-    // Manejo de errores
+  /**
+   * Maneja errores en las peticiones HTTP.
+   * 
+   * @param error Objeto HttpErrorResponse con detalles del error.
+   * @returns Observable con un mensaje de error.
+   */
   private handleError(error: HttpErrorResponse): Observable<never> {
     console.error('An error occurred:', error);
     return throwError('Something bad happened; please try again later.');

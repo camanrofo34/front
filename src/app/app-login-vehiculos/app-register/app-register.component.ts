@@ -6,22 +6,23 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 /**
- * @class RegistroComponentVehiculos
- * @description Componente para registrar un nuevo vehículo en el sistema.  
+ * Componente para registrar un nuevo vehículo en el sistema.
  * Incluye validaciones en el formulario antes de enviar los datos al servicio.
- *
- * @author Tu Nombre <tuemail@example.com>
+ *@component RegistroComponentVehiculos
+ * @class RegistroComponentVehiculos
+ * @style ./app-register.component.css
  */
 @Component({
-  selector: 'app-registro-vehiculo', // Selector del componente
-  templateUrl: './app-register.component.html', // Ruta del archivo de plantilla HTML
-  styleUrls: ['./app-register.component.css'], // Ruta del archivo de estilos CSS
-  imports: [FormsModule, CommonModule, RouterModule] // Módulos necesarios para el formulario y rutas
+  selector: 'app-registro-vehiculo',
+  templateUrl: './app-register.component.html',
+  styleUrls: ['./app-register.component.css'],
+  imports: [FormsModule, CommonModule, RouterModule]
 })
 export class RegistroComponentVehiculos {
-
+  
   /**
    * Objeto que almacena los datos del vehículo a registrar.
+   * 
    * @type {Vehiculo}
    */
   vehicle: Vehiculo = {
@@ -35,7 +36,8 @@ export class RegistroComponentVehiculos {
   };
 
   /**
-   * @constructor
+   * Crea una instancia de RegistroComponentVehiculos.
+   *
    * @param {VehiculoService} vehiculoService - Servicio para gestionar vehículos.
    * @param {Router} router - Servicio de enrutamiento para redirigir después del registro.
    */
@@ -45,9 +47,10 @@ export class RegistroComponentVehiculos {
   ) {}
 
   /**
-   * @method validarRequeridos
-   * @description Valida que los campos obligatorios no estén vacíos.
-   * @returns {boolean} Retorna `true` si algún campo obligatorio está vacío, de lo contrario `false`.
+   * Valida que los campos obligatorios no estén vacíos.
+   *
+   * @returns {boolean} `true` si algún campo obligatorio está vacío, de lo contrario `false`.
+   * @memberof RegistroComponentVehiculos
    */
   validarRequeridos(): boolean {
     return this.vehicle.nombre.trim() === '' || 
@@ -58,41 +61,44 @@ export class RegistroComponentVehiculos {
   }
 
   /**
-   * @method validarPrecio
-   * @description Valida que el precio del vehículo sea mayor a 0.
+   * Valida que el precio del vehículo sea mayor a 0.
+   *
    * @param {number} precio - Precio ingresado para el vehículo.
-   * @returns {boolean} Retorna `true` si el precio es mayor a 0, de lo contrario `false`.
+   * @returns {boolean} `true` si el precio es mayor a 0, de lo contrario `false`.
+   * @memberof RegistroComponentVehiculos
    */
   validarPrecio(precio: number): boolean {
     return precio > 0;
   }
 
   /**
-   * @method validarStock
-   * @description Valida que el stock del vehículo sea mayor a 0.
+   * Valida que el stock del vehículo sea mayor a 0.
+   *
    * @param {number} stock - Cantidad en stock del vehículo.
-   * @returns {boolean} Retorna `true` si el stock es mayor a 0, de lo contrario `false`.
+   * @returns {boolean} `true` si el stock es mayor a 0, de lo contrario `false`.
+   * @memberof RegistroComponentVehiculos
    */
   validarStock(stock: number): boolean {
     return stock > 0;
   }
 
   /**
-   * @method registerVehicle
-   * @description Valida los datos ingresados y, si son correctos, envía la solicitud para registrar el vehículo.
+   * Valida los datos ingresados y, si son correctos, envía la solicitud para registrar el vehículo.
    * En caso de éxito, redirige a la lista de vehículos.
+   *
    * @returns {void}
+   * @memberof RegistroComponentVehiculos
    */
   registerVehicle(): void {
-    if (this.validarRequeridos()){
+    if (this.validarRequeridos()) {
       alert('Todos los campos son requeridos.');
       return;
     }
-    if (!this.validarPrecio(this.vehicle.precio)){
+    if (!this.validarPrecio(this.vehicle.precio)) {
       alert('El precio debe ser mayor a 0.');
       return;
     }
-    if (!this.validarStock(this.vehicle.stock)){
+    if (!this.validarStock(this.vehicle.stock)) {
       alert('El stock debe ser mayor a 0.');
       return;
     }
@@ -100,7 +106,7 @@ export class RegistroComponentVehiculos {
     this.vehiculoService.crearVehiculo(this.vehicle).subscribe({
       next: (response) => {
         console.log('Vehículo registrado:', response);
-        this.irAListaVehiculos(); // Redirigir a la lista de vehículos después del registro
+        this.irAListaVehiculos();
       },
       error: (error) => {
         console.error('Error al registrar vehículo:', error);
@@ -110,9 +116,10 @@ export class RegistroComponentVehiculos {
   }
 
   /**
-   * @method irAListaVehiculos
-   * @description Redirige a la lista de vehículos después del registro exitoso.
+   * Redirige a la lista de vehículos después del registro exitoso.
+   *
    * @returns {void}
+   * @memberof RegistroComponentVehiculos
    */
   irAListaVehiculos(): void {
     this.router.navigate(['/vehiculos/gestion']);

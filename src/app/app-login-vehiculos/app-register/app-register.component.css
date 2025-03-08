@@ -1,3 +1,12 @@
+/*  
+  @file styles.css
+  @description Estilos para la página de registro de usuarios.
+*/
+
+/*  
+  @section Contenedor principal
+  @description Establece el diseño del <main> para centrar el contenido en la pantalla y asegurar que ocupe todo el ancho disponible.
+*/
 main {
     display: flex;
     justify-content: center; 
@@ -5,7 +14,10 @@ main {
     width: 100%; 
 }
 
-/* Contenedor del formulario  */
+/*  
+  @section Contenedor del formulario de registro
+  @description Define el diseño del formulario, incluyendo espaciado, sombra y dimensiones.
+*/
 .register-container {
     background-color: white;
     padding: 4rem;
@@ -16,7 +28,10 @@ main {
     max-width: 1000px;
 }
 
-/* Título */
+/*  
+  @section Título del formulario
+  @description Estilos para el título del formulario de registro, con subrayado y tamaño de fuente.
+*/
 .register-container h2 {
     margin-bottom: 2rem;
     font-size: 2rem;
@@ -25,12 +40,19 @@ main {
     padding-bottom: 1rem;
 }
 
-/* Estilo de los inputs */
+/*  
+  @section Grupos de entrada
+  @description Define el espacio y alineación de los elementos dentro del formulario.
+*/
 .input-group {
     margin-bottom: 1.5rem;
     text-align: left;
 }
 
+/*  
+  @section Etiquetas de entrada
+  @description Estiliza las etiquetas de los campos del formulario.
+*/
 .input-group label {
     display: block;
     font-weight: bold;
@@ -38,12 +60,19 @@ main {
     color: #8b8b8b;
 }
 
-/* Ajuste para el textarea */
+/*  
+  @section Área de texto
+  @description Ajusta el tamaño del textarea dentro del formulario.
+*/
 .input-group textarea {
     height: 100px;
     width: 100%;
 }
 
+/*  
+  @section Campos de entrada
+  @description Estilos para los campos de entrada de texto del formulario.
+*/
 .input-group input {
     width: 94%;
     padding: 0.75rem;
@@ -52,7 +81,10 @@ main {
     font-size: 1rem;
 }
 
-/* Botón de registro */
+/*  
+  @section Botón de registro
+  @description Estiliza el botón de registro, con color de fondo y transición de color al pasar el cursor.
+*/
 .register-button {
     background-color: #99bada;
     color: whitesmoke;
@@ -63,9 +95,12 @@ main {
     font-size: 1rem;
     transition: background-color 0.3s;
     cursor: pointer;
-    
 }
 
+/*  
+  @section Efecto hover en el botón
+  @description Cambia el color de fondo cuando el cursor pasa sobre el botón de registro.
+*/
 .register-button:hover {
     background-color: #738ca5;
 }

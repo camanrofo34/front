@@ -7,23 +7,22 @@ import { Vehiculo } from '../../domain/vehiculo.model';
 import { VehiculoService } from '../../services/vehiculos.service';
 
 /**
- * @class ModifyComponentVehiculos
- * @description Componente para modificar los datos de un vehículo existente en el sistema.
+ * Componente para modificar los datos de un vehículo existente en el sistema.
  * Permite cargar los datos del vehículo, validarlos y actualizar la información.
- *
- * @author Tu Nombre <tuemail@example.com>
+ * @class ModifyComponentVehiculos
+ * @component ModifyComponentVehiculos
+ * @style ./app-modify.component.css
  */
 @Component({
   selector: 'app-app-modify', // Selector del componente
   templateUrl: './app-modify.component.html', // Ruta de la plantilla HTML
-  styleUrl: './app-modify.component.css', // Ruta del archivo de estilos
+  styleUrls: ['./app-modify.component.css'], // Ruta del archivo de estilos
   imports: [RouterModule, FormsModule, CommonModule] // Módulos requeridos
 })
 export class ModifyComponentVehiculos implements OnInit {
 
   /**
    * Objeto que almacena los datos del vehículo a modificar.
-   * @type {Vehiculo}
    */
   vehiculo: Vehiculo = {
     idVehiculo: 0,
@@ -37,15 +36,14 @@ export class ModifyComponentVehiculos implements OnInit {
 
   /**
    * ID del vehículo a modificar, obtenido de la URL.
-   * @type {number}
    */
   idVehiculo: number = 0;
 
   /**
-   * @constructor
-   * @param {ActivatedRoute} route - Servicio para capturar parámetros de la URL.
-   * @param {VehiculoService} vehiculosService - Servicio para gestionar vehículos.
-   * @param {Router} router - Servicio para redirigir a otras páginas.
+   * @ignore
+   * @param {ActivatedRoute} route Servicio para capturar parámetros de la URL.
+   * @param {VehiculoService} vehiculosService Servicio para gestionar vehículos.
+   * @param {Router} router Servicio para redirigir a otras páginas.
    */
   constructor(
     private route: ActivatedRoute,
@@ -54,10 +52,8 @@ export class ModifyComponentVehiculos implements OnInit {
   ) {}
 
   /**
-   * @method ngOnInit
-   * @description Método de inicialización del componente.  
+   * Método de inicialización del componente.  
    * Obtiene el ID del vehículo desde la URL y carga sus datos.
-   * @returns {void}
    */
   ngOnInit(): void {
     this.idVehiculo = +this.route.snapshot.paramMap.get('idVehiculo')!;
@@ -68,10 +64,8 @@ export class ModifyComponentVehiculos implements OnInit {
   }
 
   /**
-   * @method cargarVehiculo
-   * @description Carga los datos del vehículo desde el servicio usando su ID.
-   * @param {number} idVehiculo - ID del vehículo a cargar.
-   * @returns {void}
+   * Carga los datos del vehículo desde el servicio usando su ID.
+   * @param idVehiculo ID del vehículo a cargar.
    */
   cargarVehiculo(idVehiculo: number): void {
     this.vehiculosService.buscarVehiculoPorId(idVehiculo).subscribe({
@@ -85,9 +79,8 @@ export class ModifyComponentVehiculos implements OnInit {
   }
 
   /**
-   * @method validarRequeridos
-   * @description Verifica que los campos obligatorios estén llenos.
-   * @returns {boolean} Retorna `true` si algún campo está vacío, de lo contrario `false`.
+   * Verifica que los campos obligatorios estén llenos.
+   * @returns `true` si algún campo está vacío, de lo contrario `false`.
    */
   validarRequeridos(): boolean {
     return this.vehiculo.nombre.trim() === '' || 
@@ -97,30 +90,26 @@ export class ModifyComponentVehiculos implements OnInit {
   }
 
   /**
-   * @method validarPrecio
-   * @description Verifica que el precio del vehículo sea mayor a 0.
-   * @param {number} precio - Precio ingresado para el vehículo.
-   * @returns {boolean} Retorna `true` si el precio es válido, de lo contrario `false`.
+   * Verifica que el precio del vehículo sea mayor a 0.
+   * @param precio Precio ingresado para el vehículo.
+   * @returns `true` si el precio es válido, de lo contrario `false`.
    */
   validarPrecio(precio: number): boolean {
     return precio > 0;
   }
 
   /**
-   * @method validarStock
-   * @description Verifica que el stock del vehículo sea mayor a 0.
-   * @param {number} stock - Cantidad en stock del vehículo.
-   * @returns {boolean} Retorna `true` si el stock es válido, de lo contrario `false`.
+   * Verifica que el stock del vehículo sea mayor a 0.
+   * @param stock Cantidad en stock del vehículo.
+   * @returns `true` si el stock es válido, de lo contrario `false`.
    */
   validarStock(stock: number): boolean {
     return stock > 0;
   }
 
   /**
-   * @method onSubmit
-   * @description Valida los datos y envía la solicitud para actualizar el vehículo.  
+   * Valida los datos y envía la solicitud para actualizar el vehículo.  
    * En caso de éxito, redirige a la lista de gestión de vehículos.
-   * @returns {void}
    */
   onSubmit(): void {
     if (this.vehiculo && this.idVehiculo) {

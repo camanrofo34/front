@@ -7,7 +7,8 @@ import { HttpClientModule } from '@angular/common/http'; // Módulo para manejar
 
 /**
  * @class LoginComponentUsers
- * @description Componente de inicio de sesión para usuarios administradores.
+ * @description 
+ * Componente de inicio de sesión para usuarios administradores.
  */
 @Component({
   selector: 'app-login', // Selector del componente
@@ -42,7 +43,8 @@ export class LoginComponentUsers {
 
   /**
    * @method onSubmit
-   * @description Método que se ejecuta cuando el usuario envía el formulario.
+   * @description 
+   * Método que se ejecuta cuando el usuario envía el formulario.
    * Llama al servicio de autenticación y redirige al usuario si es exitoso.
    * @returns {void}
    */

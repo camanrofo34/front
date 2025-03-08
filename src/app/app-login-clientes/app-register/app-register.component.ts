@@ -6,7 +6,8 @@ import { Cliente } from '../../domain/cliente.model';
 
 /**
  * @class AppRegisterClientComponent
- * @description Componente para registrar nuevos clientes.
+ * @description 
+ * Componente para registrar nuevos clientes.
  */
 @Component({
   selector: 'app-register',
@@ -19,7 +20,8 @@ export class AppRegisterClientComponent {
 
   /**
    * @property cliente
-   * @description Objeto que almacena la información del cliente a registrar.
+   * @description 
+   * Objeto que almacena la información del cliente a registrar.
    */
   cliente: Cliente = {
     idCliente: 0,
@@ -38,7 +40,8 @@ export class AppRegisterClientComponent {
 
   /**
    * @method validarTelefono
-   * @description Valida que el número de teléfono contenga solo dígitos y tenga entre 7 y 15 caracteres.
+   * @description 
+   * Valida que el número de teléfono contenga solo dígitos y tenga entre 7 y 15 caracteres.
    * @param {string} telefono - Número de teléfono a validar.
    * @returns {boolean} - True si es válido, false en caso contrario.
    */
@@ -49,7 +52,8 @@ export class AppRegisterClientComponent {
 
   /**
    * @method validarRequeridos
-   * @description Verifica que todos los campos requeridos estén llenos.
+   * @description 
+   * Verifica que todos los campos requeridos estén llenos.
    * @returns {boolean} - True si hay algún campo vacío, false si todos están completos.
    */
   validarRequeridos(): boolean {
@@ -61,7 +65,8 @@ export class AppRegisterClientComponent {
 
   /**
    * @method onSubmit
-   * @description Maneja el envío del formulario y registra un nuevo cliente si las validaciones son correctas.
+   * @description 
+   * Maneja el envío del formulario y registra un nuevo cliente si las validaciones son correctas.
    */
   onSubmit(): void {
     if (this.validarRequeridos()) {

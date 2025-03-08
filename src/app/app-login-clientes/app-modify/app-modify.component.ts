@@ -7,7 +7,8 @@ import { ClienteService } from '../../services/clientes.service';
 
 /**
  * @class ModifyClientsComponent
- * @description Componente para modificar o eliminar un cliente existente.
+ * @description 
+ * Componente para modificar o eliminar un cliente existente.
  */
 @Component({
   selector: 'app-mod-customer',
@@ -40,7 +41,8 @@ export class ModifyClientsComponent implements OnInit {
 
   /**
    * @method ngOnInit
-   * @description Obtiene el ID del cliente desde la URL y carga sus datos.
+   * @description 
+   * Obtiene el ID del cliente desde la URL y carga sus datos.
    */
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('idCliente');
@@ -53,7 +55,8 @@ export class ModifyClientsComponent implements OnInit {
 
   /**
    * @method validarTelefono
-   * @description Valida que el número de teléfono contenga solo dígitos y tenga entre 7 y 15 caracteres.
+   * @description 
+   * Valida que el número de teléfono contenga solo dígitos y tenga entre 7 y 15 caracteres.
    * @param {string} telefono - Número de teléfono a validar.
    * @returns {boolean} - True si es válido, false en caso contrario.
    */
@@ -63,7 +66,8 @@ export class ModifyClientsComponent implements OnInit {
 
   /**
    * @method validarRequeridos
-   * @description Verifica que todos los campos obligatorios estén llenos.
+   * @description 
+   * Verifica que todos los campos obligatorios estén llenos.
    * @returns {boolean} - True si hay algún campo vacío, false si todos están completos.
    */
   validarRequeridos(): boolean {
@@ -75,7 +79,8 @@ export class ModifyClientsComponent implements OnInit {
 
   /**
    * @method cargarCliente
-   * @description Carga los datos del cliente desde el servicio.
+   * @description 
+   * Carga los datos del cliente desde el servicio.
    * @param {number} id - ID del cliente a cargar.
    */
   cargarCliente(id: number): void {
@@ -92,7 +97,8 @@ export class ModifyClientsComponent implements OnInit {
 
   /**
    * @method guardarCambios
-   * @description Valida los datos y actualiza la información del cliente.
+   * @description 
+   * Valida los datos y actualiza la información del cliente.
    */
   guardarCambios(): void {
     if (this.validarRequeridos()) {
@@ -119,7 +125,8 @@ export class ModifyClientsComponent implements OnInit {
 
   /**
    * @method eliminarCliente
-   * @description Solicita confirmación y elimina el cliente si el usuario lo acepta.
+   * @description 
+   * Solicita confirmación y elimina el cliente si el usuario lo acepta.
    */
   eliminarCliente(): void {
     if (confirm('¿Estás seguro de eliminar este cliente? Esta acción no se puede deshacer.')) {

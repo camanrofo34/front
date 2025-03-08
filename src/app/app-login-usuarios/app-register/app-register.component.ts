@@ -7,19 +7,21 @@ import { FormsModule } from '@angular/forms';
 
 /**
  * @class RegisterComponentUsers
- * @description Componente para registrar un nuevo usuario.
+ * @description 
+ * Componente para registrar un nuevo usuario.
  */
 @Component({
   selector: 'app-app-register', // Selector del componente
   imports: [CommonModule, RouterModule, FormsModule], // Importación de módulos necesarios
   templateUrl: './app-register.component.html', // Ruta al archivo HTML
-  styleUrl: './app-register.component.css' // Ruta al archivo de estilos CSS
+  styleUrls: ['./app-register.component.css'] // Ruta al archivo de estilos CSS
 })
 export class RegisterComponentUsers {
 
   /**
    * @property usuario
-   * @description Objeto que almacena los datos del usuario a registrar.
+   * @description 
+   * Objeto que almacena los datos del usuario a registrar.
    * @type {Usuario}
    */
   usuario: Usuario = {
@@ -46,7 +48,8 @@ export class RegisterComponentUsers {
 
   /**
    * @method onSubmit
-   * @description Método que se ejecuta al enviar el formulario.
+   * @description 
+   * Método que se ejecuta al enviar el formulario.
    * Llama al servicio para registrar un usuario y maneja la respuesta.
    * @returns {void}
    */

@@ -7,7 +7,8 @@ import { ClienteService } from '../../services/clientes.service';
 
 /**
  * @class AppClientsListComponent
- * @description Componente para gestionar la lista de clientes con funciones de búsqueda y modificación.
+ * @description 
+ * Componente para gestionar la lista de clientes con funciones de búsqueda y modificación.
  */
 @Component({
   selector: 'app-user-list',
@@ -31,7 +32,8 @@ export class AppClientsListComponent implements OnInit {
 
   /**
    * @method ngOnInit
-   * @description Carga la lista de clientes al inicializar el componente.
+   * @description 
+   * Carga la lista de clientes al inicializar el componente.
    */
   ngOnInit(): void {
     this.cargarClientes();
@@ -39,7 +41,8 @@ export class AppClientsListComponent implements OnInit {
 
   /**
    * @method cargarClientes
-   * @description Obtiene la lista completa de clientes desde el servicio.
+   * @description 
+   * Obtiene la lista completa de clientes desde el servicio.
    */
   cargarClientes(): void {
     this.clienteService.listarClientes().subscribe({
@@ -55,7 +58,8 @@ export class AppClientsListComponent implements OnInit {
 
   /**
    * @method buscarPorNombre
-   * @description Realiza la búsqueda de clientes por nombre legal.
+   * @description 
+   * Realiza la búsqueda de clientes por nombre legal.
    */
   buscarPorNombre(): void {
     if (!this.busquedaNombre.trim()) {
@@ -77,7 +81,8 @@ export class AppClientsListComponent implements OnInit {
 
   /**
    * @method buscarPorId
-   * @description Realiza la búsqueda de un cliente por su ID.
+   * @description 
+   * Realiza la búsqueda de un cliente por su ID.
    */
   buscarPorId(): void {
     if (this.busquedaId === null) {
@@ -99,7 +104,8 @@ export class AppClientsListComponent implements OnInit {
 
   /**
    * @method modificarUsuario
-   * @description Redirige a la página de modificación de un cliente.
+   * @description 
+   * Redirige a la página de modificación de un cliente.
    * @param {number} id - ID del cliente a modificar.
    */
   modificarUsuario(id: number): void {
@@ -108,7 +114,8 @@ export class AppClientsListComponent implements OnInit {
 
   /**
    * @method cerrarSesion
-   * @description Cierra sesión eliminando los datos de almacenamiento y redirigiendo al login.
+   * @description 
+   * Cierra sesión eliminando los datos de almacenamiento y redirigiendo al login.
    */
   cerrarSesion(): void {
     localStorage.clear();

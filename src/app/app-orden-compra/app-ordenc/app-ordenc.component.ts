@@ -8,43 +8,40 @@ import { FormsModule } from '@angular/forms';
 
 /**
  * @class AppOrdencComponent
- * @description Componente para la gestión de órdenes de compra.  
- * Permite la actualización de vehículos en la orden y su almacenamiento en el servidor.
- *
- * @author Tu Nombre <tuemail@example.com>
+ * @description 
+ * Componente encargado de gestionar las órdenes de compra.  
+ * Permite la asignación de vehículos a la orden y su almacenamiento en el sistema.
  */
 @Component({
-  selector: 'app-app-ordenc', // Selector del componente
-  imports: [CommonModule, AppOrdencTablaComponent, FormsModule, CommonModule], // Módulos importados
-  templateUrl: './app-ordenc.component.html', // Ruta del archivo de plantilla HTML
-  styleUrl: './app-ordenc.component.css' // Ruta del archivo de estilos CSS
+  selector: 'app-app-ordenc', // Selector del componente en la plantilla
+  imports: [CommonModule, AppOrdencTablaComponent, FormsModule], // Módulos requeridos
+  templateUrl: './app-ordenc.component.html', // Archivo de plantilla HTML
+  styleUrls: ['./app-ordenc.component.css'] // Archivo de estilos CSS
 })
 export class AppOrdencComponent {
 
   /**
+   * @property {OrdenCompraDTO} ordenCompra - Representa la orden de compra en proceso.
+   */
+  ordenCompra: OrdenCompraDTO = new OrdenCompraDTO();
+
+  /**
+   * @property {boolean} refrescarListas - Indica si se debe actualizar la lista de órdenes.
+   */
+  refrescarListas: boolean = false;
+
+  /**
    * @constructor
-   * @param {OrdenCompraService} ordenCompraService - Servicio para gestionar órdenes de compra.
+   * @param {OrdenCompraService} ordenCompraService - Servicio para la gestión de órdenes de compra.
    */
   constructor(
     private ordenCompraService: OrdenCompraService
   ) { }
 
   /**
-   * Representa la orden de compra en proceso.
-   * @type {OrdenCompraDTO}
-   */
-  ordenCompra: OrdenCompraDTO = new OrdenCompraDTO();
-
-  /**
-   * Bandera utilizada para indicar si se debe refrescar la lista de órdenes.
-   * @type {boolean}
-   */
-  refrescarListas: boolean = false;
-
-  /**
    * @method actualizarOrdenVehiculos
-   * @description Actualiza la lista de vehículos asociados a la orden de compra.
-   * @param {OrdenVehiculoDTO[]} ordenVehiculos - Lista de vehículos a asignar a la orden.
+   * @description Asigna una lista de vehículos a la orden de compra.
+   * @param {OrdenVehiculoDTO[]} ordenVehiculos - Vehículos a asociar con la orden.
    * @returns {void}
    */
   actualizarOrdenVehiculos(ordenVehiculos: OrdenVehiculoDTO[]): void {
@@ -53,8 +50,8 @@ export class AppOrdencComponent {
 
   /**
    * @method guardarOrden
-   * @description Guarda la orden de compra en el sistema.  
-   * Asigna la fecha actual antes de enviarla al servicio y maneja la respuesta del servidor.
+   * @description Guarda la orden de compra en el sistema, asignándole la fecha actual.  
+   * Maneja la respuesta del servidor y notifica el resultado al usuario.
    * @returns {void}
    */
   guardarOrden(): void {
@@ -77,14 +74,14 @@ export class AppOrdencComponent {
 
   /**
    * @method emitirActualizacion
-   * @description Activa la bandera `refrescarListas` para notificar la actualización de las órdenes.  
-   * Se reinicia después de un tiempo para permitir futuras actualizaciones.
+   * @description Activa la bandera `refrescarListas` para indicar que se ha actualizado la orden.  
+   * Luego de un tiempo, reinicia la bandera para permitir futuras actualizaciones.
    * @returns {void}
    */
   emitirActualizacion(): void {
     this.refrescarListas = true;
     setTimeout(() => {
-      this.refrescarListas = false; // Reinicio para permitir futuras actualizaciones
+      this.refrescarListas = false; // Restablece la bandera
     });
   }
 }

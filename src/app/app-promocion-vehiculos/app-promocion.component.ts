@@ -5,10 +5,9 @@ import { PromocionService } from '../services/promocion.service';
 
 /**
  * @class SampleCustomerComponent
- * @description Componente encargado de obtener y mostrar una lista de vehículos en promoción.
+ * @description 
+ * Componente encargado de obtener y mostrar una lista de vehículos en promoción.
  * Utiliza el servicio `PromocionService` para obtener los datos de los vehículos desde la API.
- *
- * @author Tu Nombre <tuemail@example.com>
  */
 @Component({
   selector: 'app-sample-customer', // Selector del componente

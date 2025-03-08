@@ -1,6 +1,12 @@
-// src/environments/environment.ts
+/**
+ * Configuración del entorno para desarrollo.
+ * 
+ * Este archivo contiene las variables de entorno utilizadas en el entorno de desarrollo.
+ */
 export const environment = {
-    production: false,
-    apiUrl: 'http://safiapp.bucaramanga.upb.edu.co:8081'
-  };
-  
+  /** Indica si la aplicación se ejecuta en modo producción. */
+  production: false,
+
+  /** URL base de la API utilizada en desarrollo. */
+  apiUrl: 'http://speedorz.bucaramanga.upb.edu.co:8081'
+};

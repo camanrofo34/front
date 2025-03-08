@@ -1,3 +1,12 @@
+/*  
+  @file styles.css
+  @description Estilos para la página de modificación de datos.
+*/
+
+/*  
+  @section Contenedor principal de modificación
+  @description Establece el diseño del contenedor principal, incluyendo márgenes, padding, sombra y tamaño.
+*/
 .modify-container {
     background-color: white;
     padding: 4rem;
@@ -8,7 +17,10 @@
     margin-top: 100px;
 }
 
-/* Evitar duplicación de estilos en elementos anidados */
+/*  
+  @section Contenedor anidado
+  @description Evita la duplicación de estilos en elementos internos dentro de .modify-container.
+*/
 .modify-container > .modify-container {
     padding: 0;
     margin: 0;
@@ -16,6 +28,10 @@
     width: 100%;
 }
 
+/*  
+  @section Título del formulario de modificación
+  @description Define los estilos del título dentro del formulario, incluyendo margen, tamaño y alineación.
+*/
 .modify-container h2 {
     margin-bottom: 2.2rem;
     border-bottom: 1.5px solid #b8b8b8;
@@ -25,13 +41,19 @@
     color: #555;
 }
 
-/* Estilo para los grupos de entradas */
+/*  
+  @section Grupos de entrada
+  @description Estilos generales para los elementos de entrada del formulario.
+*/
 .input-group {
     margin-bottom: 2rem;
     text-align: left;
 }
 
-/* Estilo para las etiquetas de entrada */
+/*  
+  @section Etiquetas de entrada
+  @description Define la apariencia de las etiquetas asociadas a los campos de entrada.
+*/
 .input-group label {
     display: block;
     font-weight: bold;
@@ -39,7 +61,10 @@
     color: #8b8b8b;
 }
 
-/* Estilo para las entradas de texto y número */
+/*  
+  @section Campos de entrada y áreas de texto
+  @description Estilos compartidos para inputs y textarea, asegurando coherencia en el diseño.
+*/
 .input-group input,
 .input-group textarea {
     width: 96%;
@@ -50,18 +75,28 @@
     box-sizing: border-box;
 }
 
+/*  
+  @section Área de texto
+  @description Ajusta el tamaño y permite la redimensión vertical del textarea.
+*/
 .input-group textarea {
     height: 100px;
     resize: vertical;
 }
 
-/* Botones dentro del formulario */
+/*  
+  @section Contenedor de botones
+  @description Organiza los botones dentro del formulario con un margen superior.
+*/
 .modify-buttons {
     display: flex;
     margin-top: 1.5rem;
 }
 
-/* Estilo para el botón de modificar */
+/*  
+  @section Botón de guardar modificaciones
+  @description Estiliza el botón principal para guardar cambios.
+*/
 .save-button {
     background-color: #99bada;
     color: whitesmoke;
@@ -73,11 +108,18 @@
     cursor: pointer;
 }
 
-/* Estilo para el hover (al pasar el cursor sobre el botón) */
+/*  
+  @section Efecto hover en el botón de guardar
+  @description Cambia el color de fondo cuando el cursor pasa sobre el botón de guardar.
+*/
 .save-button:hover {
     background-color: #738ca5;
 }
 
+/*  
+  @section Separador visual
+  @description Estiliza una línea horizontal sutil para separar elementos.
+*/
 .rectangle {
     width: 100%;
     height: 0.5px;

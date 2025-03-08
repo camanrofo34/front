@@ -6,16 +6,17 @@ import { LoginServiceService } from '../services/login-service.service';
 
 /**
  * @class LoginComponentVehiculos
- * @description Componente para gestionar el inicio de sesión del administrador de inventario de vehículos.
+ * @description 
+ * Componente para gestionar el inicio de sesión del administrador de inventario de vehículos.
  * Permite autenticarse con un usuario y contraseña, y redirige a la gestión de vehículos en caso de éxito.
- *
- * @author Tu Nombre <tuemail@example.com>
+ * @style ./app-login.component.css
  */
 @Component({
   selector: 'app-app-login', // Selector del componente
-  imports: [CommonModule, RouterModule, FormsModule, CommonModule], // Módulos necesarios para el componente
+  standalone: true,
+  imports: [CommonModule, RouterModule, FormsModule], // Módulos necesarios para el componente
   templateUrl: './app-login.component.html', // Ruta del archivo de plantilla HTML
-  styleUrl: './app-login.component.css' // Ruta del archivo de estilos CSS
+  styleUrls: ['./app-login.component.css'] // Ruta del archivo de estilos CSS
 })
 export class LoginComponentVehiculos {
 
@@ -34,7 +35,7 @@ export class LoginComponentVehiculos {
   /**
    * @constructor
    * @param {LoginServiceService} loginService - Servicio de autenticación.
-   * @param {Router} router - Servicio de enrutamiento para redireccionar al usuario.
+   * @param {Router} router - Servicio de enrutamiento para redireccionar al usuario tras el inicio de sesión.
    */
   constructor(
     private loginService: LoginServiceService,
@@ -46,11 +47,12 @@ export class LoginComponentVehiculos {
    * @description Maneja el evento de envío del formulario de inicio de sesión.  
    * Llama al servicio de autenticación y, si el login es exitoso, redirige a la página de gestión de vehículos.
    * En caso de error, muestra un mensaje de alerta.
+   * 
    * @returns {void}
    */
   onSubmit(): void {
     this.loginService.loginAdminInventario(this.username, this.password).subscribe({
-      next: (response) => {
+      next: () => {
         // Redirige al usuario a la página de gestión de vehículos tras un login exitoso
         this.router.navigate(['/vehiculos/gestion']);
       },
