@@ -5,6 +5,7 @@ import { OrdenCompraDTO } from '../../domain/orden-compra-dto.model';
 import { OrdenVehiculoDTO } from '../../domain/orden-vehiculo-dto.model';
 import { OrdenCompraService } from '../../services/orden-compra.service';
 import { FormsModule } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 /**
  * @class AppOrdencComponent
@@ -54,23 +55,47 @@ export class AppOrdencComponent {
    * Maneja la respuesta del servidor y notifica el resultado al usuario.
    * @returns {void}
    */
-  guardarOrden(): void {
-    this.ordenCompra.fecha = new Date().toISOString();
+guardarOrden(): void {
+  this.ordenCompra.fecha = new Date().toISOString();
 
-    console.log('Orden a guardar:', this.ordenCompra);
+  console.log('Orden a guardar:', this.ordenCompra);
 
-    this.ordenCompraService.crearOrdenCompra(this.ordenCompra).subscribe({
-      next: (respuesta) => {
-        console.log('Respuesta del servidor:', respuesta);
-        alert(`Orden guardada exitosamente. Respuesta: ${JSON.stringify(respuesta)}`);
-        this.emitirActualizacion();
-      },
-      error: (error) => {
-        console.error('Error al guardar orden', error);
-        alert('Error al guardar la orden');
-      }
-    });
-  }
+  this.ordenCompraService.crearOrdenCompra(this.ordenCompra).subscribe({
+    next: (respuesta) => {
+      console.log('Respuesta del servidor:', respuesta);
+
+      Swal.fire({
+        icon: 'success',
+        title: '¡Orden guardada, Dirigete a la caja para completar pago!',
+        html: `
+                <p>ID de la Orden: ${respuesta.idOrdenCompra}</p>
+                <p>ID Cliente: ${respuesta.cliente.idCliente}</p>
+                <p>Nombre Cliente:  ${respuesta.cliente.nombreLegal}</p>
+                <p>Cedula: ${respuesta.cliente.numeroIdentificacion}</p>
+                <p>Subtotal: $ ${respuesta.subtotal}</p>
+                <p>Total: $ ${respuesta.total}</p>
+                <p>Fecha de Creación: ${respuesta.fecha}</p>
+               `,
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#3085d6',
+        background: '#f1f1f1',
+        width: '600px'
+      });
+
+      this.emitirActualizacion();
+    },
+    error: (error) => {
+      console.error('Error al guardar orden', error);
+
+      Swal.fire({
+        icon: 'error',
+        title: 'Error al guardar',
+        confirmButtonText: 'Intentar de nuevo',
+        confirmButtonColor: '#d33'
+      });
+    }
+  });
+}
 
   /**
    * @method emitirActualizacion
