@@ -1,16 +1,45 @@
-<main>
-    <div class="impuestos-container">
-      <h2>Dar de Baja Impuesto</h2>
-      <!-- Usa (ngSubmit) para manejar el envío del formulario -->
-      <form id="impuestos-form" (ngSubmit)="onSubmit()">
-        <div class="input-group">
-          <label for="impuestoId">ID del Impuesto</label>
-          <!-- Vincula el input con una propiedad del componente usando [(ngModel)] -->
-          <input type="text" id="impuestoId" name="impuestoId" [(ngModel)]="impuestoId" required>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dar de Baja Impuesto</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="container">
+        <h2>GESTION DE IMPUESTOS</h2>
+
+        <!-- Contenedor del subtítulo y botón "Agregar" -->
+        <div class="header">
+            <h3>Impuestos Activos</h3>
+            <button class="agregar-btn">Agregar</button>
         </div>
-        <!-- Botón de envío del formulario -->
-        <button type="submit" class="impuestos-button">Dar de Baja</button>
-      </form>
+
+        <ul class="lista-impuestos">
+            <li>
+                <span>IVA 16%</span>
+                <div class="botones">
+                    <button class="modificar-btn">Modificar</button>
+                    <button class="dar-baja-btn">Dar de Baja</button>
+                </div>
+            </li>
+            <li>
+                <span>ISR 30%</span>
+                <div class="botones">
+                    <button class="modificar-btn">Modificar</button>
+                    <button class="dar-baja-btn">Dar de Baja</button>
+                </div>
+            </li>
+            <li>
+                <span>IEPS 8%</span>
+                <div class="botones">
+                    <button class="modificar-btn">Modificar</button>
+                    <button class="dar-baja-btn">Dar de Baja</button>
+                </div>
+            </li>
+        </ul>
     </div>
-  </main>
-  
+
+</body>
+</html>
