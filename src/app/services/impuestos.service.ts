@@ -52,6 +52,70 @@ export class ImpuestoService {
   }
 
   /**
+   * Obtiene un impuesto por su ID.
+   * @param id Identificador del impuesto.
+   * @returns Un observable con el impuesto encontrado.
+   */
+  obtenerImpuesto(id: number): Observable<Impuesto> {
+      const headers = new HttpHeaders({
+          'Authorization': `Bearer ${this.getAuthToken()}` // Incluye el token JWT
+      });
+
+      return this.http.get<Impuesto>(`${this.apiUrl}/${id}`, { headers }).pipe(
+          catchError(this.handleError)
+      );
+  }
+
+  /**
+   * Crea un nuevo impuesto.
+   * @param impuesto Datos del impuesto a crear.
+   * @returns Un observable con el impuesto creado.
+   */
+  crearImpuesto(impuesto: Impuesto): Observable<Impuesto> {
+      const headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${this.getAuthToken()}` // Incluye el token JWT
+      });
+
+      const { id, ...impuestoSinId } = impuesto; 
+
+      return this.http.post<Impuesto>(this.apiUrl, impuestoSinId, { headers }).pipe(
+          catchError(this.handleError)
+      );
+  }
+
+  /**
+   * Actualiza un impuesto existente.
+   * @param impuesto Datos del impuesto a actualizar.
+   * @returns Un observable con el impuesto actualizado.
+   */
+  actualizarImpuesto(impuesto: Impuesto): Observable<Impuesto> {
+      const headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${this.getAuthToken()}` // Incluye el token JWT
+      });
+
+      return this.http.put<Impuesto>(`${this.apiUrl}/${impuesto.id}`, impuesto, { headers }).pipe(
+          catchError(this.handleError)
+      );
+  }
+
+  /**
+   * Elimina un impuesto por su ID.
+   * @param id Identificador del impuesto a eliminar.
+   * @returns Un observable vacío.
+   */
+  eliminarImpuesto(id: number): Observable<void> {
+      const headers = new HttpHeaders({
+        'Authorization': `Bearer ${this.getAuthToken()}` // Incluye el token JWT
+      });
+
+      return this.http.delete<void>(`${this.apiUrl}/${id}`, { headers }).pipe(
+          catchError(this.handleError)
+      );
+  }
+
+  /**
    * Manejo de errores en las solicitudes HTTP.
    * @param error Objeto de error HTTP.
    * @returns Un observable que lanza un error.

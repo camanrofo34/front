@@ -29,7 +29,7 @@ export class PromocionService {
    * @returns Observable con la respuesta de la API.
    */
   getVehiculos(): Observable<any> {
-    return this.http.get(`${this.apiConfigService.getApiUrl()}/promocion`, {
+    return this.http.get(`${this.apiConfigService.getApiUrl()}/vehiculos-promocion`, {
       headers: this.getHeaders()
     }).pipe(
       catchError(this.handleError)

@@ -8,5 +8,5 @@ export const environment = {
   production: false,
 
   /** URL base de la API utilizada en desarrollo. */
-  apiUrl: 'http://speedorz.bucaramanga.upb.edu.co:8081'
+  apiUrl: 'http://localhost:8080'
 };

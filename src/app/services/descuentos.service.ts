@@ -53,6 +53,71 @@ export class DescuentoService {
   }
 
   /**
+   * Obtiene un descuento por su ID.
+   * @param id Identificador del descuento.
+   * @returns Un observable con el descuento encontrado.
+   */
+  obtenerDescuento(id: number): Observable<Descuento> {
+      const headers = new HttpHeaders({
+        'Authorization': `Bearer ${this.getAuthToken()}` // Incluye el token JWT
+      });
+
+      return this.http.get<Descuento>(`${this.apiUrl}/${id}`, { headers }).pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  /**
+   * Crea un nuevo descuento.
+   * @param descuento Datos del descuento a crear.
+   * @returns Un observable con el descuento creado.
+   */
+  crearDescuento(descuento: Descuento): Observable<Descuento> {
+      const headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${this.getAuthToken()}` // Incluye el token JWT
+      });
+
+      const { id, ...descuentoSinId } = descuento; 
+
+      return this.http.post<Descuento>(this.apiUrl, descuentoSinId, { headers }).pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  /**
+   * Actualiza un descuento existente.
+   * @param descuento Datos del descuento a actualizar.
+   * @returns Un observable con el descuento actualizado.
+   */
+  actualizarDescuento(descuento: Descuento): Observable<Descuento> {
+      const headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${this.getAuthToken()}` // Incluye el token JWT
+      });
+
+      return this.http.put<Descuento>(`${this.apiUrl}/${descuento.id}`, descuento, { headers }).pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  /**
+   * Elimina un descuento por su ID.
+   * @param id Identificador del descuento a eliminar.
+   * @returns Un observable vacío.
+   */
+  eliminarDescuento(id: number): Observable<void> {
+      const headers = new HttpHeaders({
+        'Authorization': `Bearer ${this.getAuthToken()}` // Incluye el token JWT
+      });
+
+      return this.http.delete<void>(`${this.apiUrl}/${id}`, { headers }).pipe(
+        catchError(this.handleError)
+      );
+  }
+
+
+  /**
    * Manejo de errores en las solicitudes HTTP.
    * @param error Objeto de error HTTP.
    * @returns Un observable que lanza un error.
