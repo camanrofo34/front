@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { GestionListaVehiculosComponent } from "./app-gestion-lista/app-gestion-lista.component";
+import { InventarioService } from '../../services/inventario.service';
 
 /**
  * Componente encargado de la gestión de vehículos.
@@ -48,6 +49,7 @@ export class GestionVehiculosComponent implements OnInit {
    */
   constructor(
     private vehiculoService: VehiculoService, 
+    private inventarioService: InventarioService,
     private router: Router
   ) {}
 
@@ -111,6 +113,19 @@ export class GestionVehiculosComponent implements OnInit {
         }
       });
     }
+  }
+
+  generarReporte(): void {
+    this.inventarioService.descargarReporteInventario().subscribe({
+      next: (data) => {
+        const blob = new Blob([data], { type: 'application/pdf' });
+        const url = window.URL.createObjectURL(blob);
+        window.open(url);
+      },
+      error: (error) => {
+        console.error('Error al descargar el reporte:', error);
+      }
+    });
   }
 
   /**
