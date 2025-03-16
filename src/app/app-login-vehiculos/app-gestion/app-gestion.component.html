@@ -57,14 +57,26 @@
     </div>
 
     <!-- 
-      @section Agregar Vehículo 
-      @description Permite agregar un nuevo vehículo al sistema.
+      @section Agregar Vehículo y generar reportes
+      @description Permite agregar un nuevo vehículo al sistema, además de generar pdfs de diferentes reportes
     -->
-    <button type="submit" 
-            class="add-user-button" 
-            routerLink="/vehiculos/register">
-      Agregar Vehículo
-    </button>
+    <div class="button-section">
+      <button type="submit" 
+      class="add-user-button" 
+      routerLink="/vehiculos/register">
+          Agregar Vehículo
+      </button>
+      <div class="report">
+        <button class="report-button">Generar Reporte</button>
+        <div class="report-content">
+          <button (click)="generarReporteInventario()">Reporte de Inventario</button>
+          <button (click)="generarReporteHistorico()">Histórico de Precios</button>
+          <button (click)="generarReportePedido()">Reporte de Pedidos</button>
+          <button (click)="generarReporteVentas()">Ventas (Pérdida y Ganancias)</button>
+        </div>
+      </div>
+    </div>
+
 
     <!-- 
       @section Lista de Vehículos 
@@ -81,6 +93,5 @@
     -->
     <div class="rectangle" aria-hidden="true"></div>
 
-    <button (click)="generarReporte()">Generar Reporte</button>
   </div>
 </main>

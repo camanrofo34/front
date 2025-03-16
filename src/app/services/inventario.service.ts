@@ -3,60 +3,70 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { ApiConfigService } from './api-config-service.service';
-import { Impuesto } from '../domain/impuesto.model';
 
-/**
- * Servicio para gestionar los documentos de inventario.
- */
 @Injectable({
   providedIn: 'root'
 })
 export class InventarioService {
 
-    /**
-   * URL base de la API para los documentos de inventario.
-   */
   private apiUrl: string;
 
-  /**
-   * Constructor del servicio.
-   * @param http Cliente HTTP para realizar solicitudes a la API.
-   * @param apiConfigService Servicio de configuración de la API.
-   */
-  constructor(private http: HttpClient, 
+  constructor(
+    private http: HttpClient,
     private apiConfigService: ApiConfigService
   ) {
-      this.apiUrl = `${apiConfigService.getApiUrl()}/reportes`;
+    this.apiUrl = `${this.apiConfigService.getApiUrl()}/reportes`;
   }
 
-  /**
-   * Obtiene el token de autenticación almacenado en localStorage.
-   * @returns El token JWT como string.
-   */
   private getAuthToken(): string {
-      return localStorage.getItem('token') || '';
+    return localStorage.getItem('token') || '';
   }
 
-  /**
-   * Recupera el reporte de inventario actual
-   */
-  descargarReporteInventario(): Observable<Blob> {
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${this.getAuthToken()}`, // Incluye el token JWT
-      'Accept': 'application/pdf' // Indica que esperas un PDF como respuesta
+  private getHeaders(): HttpHeaders {
+    return new HttpHeaders({
+      'Authorization': `Bearer ${this.getAuthToken()}`,
+      'Accept': 'application/pdf'
     });
-  
-    return this.http.get(`${this.apiUrl}/inventario`, { headers, responseType: 'blob' }).pipe(
-      catchError(this.manejarError)
+  }
+
+  generarReporteInventario(): Observable<Blob> {
+    return this.http.get(`${this.apiUrl}/inventario`, {
+      headers: this.getHeaders(),
+      responseType: 'blob'
+    }).pipe(
+      catchError(this.handleError)
     );
   }
 
-  /**
-   * Manejo de errores para las solicitudes HTTP.
-   */
-  private manejarError(error: HttpErrorResponse) {
-    console.error('Ocurrió un error:', error);
-    return throwError(() => new Error('Error al descargar el reporte de inventario. Inténtelo de nuevo más tarde.'));
+  generarReportePedidos(): Observable<Blob> {
+    return this.http.get(`${this.apiUrl}/pedidos`, {
+      headers: this.getHeaders(),
+      responseType: 'blob'
+    }).pipe(
+      catchError(this.handleError)
+    );
   }
 
-}
+  generarReporteVentas(): Observable<Blob> {
+    return this.http.get(`${this.apiUrl}/ventas`, {
+      headers: this.getHeaders(),
+      responseType: 'blob'
+    }).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  generarHistoricoPrecios(): Observable<Blob> {
+    return this.http.get(`${this.apiUrl}/historico`, {
+      headers: this.getHeaders(),
+      responseType: 'blob'
+    }).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  private handleError(error: HttpErrorResponse): Observable<never> {
+    console.error('An error occurred:', error);
+    return throwError(() => new Error('Something bad happened; please try again later.'));
+  }
+} 

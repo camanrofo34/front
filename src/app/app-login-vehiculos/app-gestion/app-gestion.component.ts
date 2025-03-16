@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Vehiculo } from '../../domain/vehiculo.model';
 import { VehiculoService } from '../../services/vehiculos.service';
+import { InventarioService } from '../../services/inventario.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { GestionListaVehiculosComponent } from "./app-gestion-lista/app-gestion-lista.component";
-import { InventarioService } from '../../services/inventario.service';
 
 /**
  * Componente encargado de la gestión de vehículos.
@@ -15,15 +15,15 @@ import { InventarioService } from '../../services/inventario.service';
  * @style ./app-gestion.component.css
  */
 @Component({
-  selector: 'app-gestion-vehiculos', // Selector del componente en el HTML
-  templateUrl: './app-gestion.component.html', // Archivo de plantilla asociado
-  styleUrls: ['./app-gestion.component.css'], // Archivo de estilos asociado
-  imports: [GestionListaVehiculosComponent, FormsModule, CommonModule, RouterModule] // Módulos requeridos
+  selector: 'app-gestion-vehiculos',
+  templateUrl: './app-gestion.component.html',
+  styleUrls: ['./app-gestion.component.css'],
+  imports: [GestionListaVehiculosComponent, FormsModule, CommonModule, RouterModule]
 })
 export class GestionVehiculosComponent implements OnInit {
 
   /**
-   * Término de búsqueda utilizado para filtrar vehículos por nombre.
+   * Término de búsqueda para filtrar vehículos por nombre de usuario.
    */
   searchTerm: string = '';
 
@@ -33,12 +33,12 @@ export class GestionVehiculosComponent implements OnInit {
   vehiculosFiltrados: Vehiculo[] = [];
 
   /**
-   * Lista completa de vehículos obtenidos del servicio.
+   * Lista completa de vehículos cargados desde el servicio.
    */
   allVehiculos: Vehiculo[] = [];
 
   /**
-   * ID del vehículo a buscar.
+   * Identificador para buscar un vehículo específico.
    */
   searchId: number | null = null;
 
@@ -54,14 +54,14 @@ export class GestionVehiculosComponent implements OnInit {
   ) {}
 
   /**
-   * Inicializa el componente cargando la lista de vehículos.
+   * Método del ciclo de vida de Angular, se ejecuta al iniciar el componente.
    */
   ngOnInit(): void {
     this.cargarVehiculos();
   }
 
   /**
-   * Carga la lista completa de vehículos desde el servicio.
+   * Carga todos los vehículos utilizando el servicio correspondiente.
    */
   cargarVehiculos(): void {
     this.vehiculoService.listarVehiculos().subscribe({
@@ -76,8 +76,7 @@ export class GestionVehiculosComponent implements OnInit {
   }
 
   /**
-   * Filtra los vehículos por nombre utilizando el término de búsqueda.
-   * Si no se introduce un nombre, se muestran todos los vehículos.
+   * Filtra los vehículos basados en el término de búsqueda.
    */
   buscarVehiculos(): void {
     if (this.searchTerm.trim()) {
@@ -96,8 +95,7 @@ export class GestionVehiculosComponent implements OnInit {
   }
 
   /**
-   * Busca un vehículo específico por su ID.
-   * Si no se proporciona un ID, se vuelve a listar todos los vehículos.
+   * Busca un vehículo por su ID.
    */
   buscarVehiculoPorId(): void {
     if (this.searchId === null) {
@@ -115,26 +113,66 @@ export class GestionVehiculosComponent implements OnInit {
     }
   }
 
-  generarReporte(): void {
-    this.inventarioService.descargarReporteInventario().subscribe({
-      next: (data) => {
-        const blob = new Blob([data], { type: 'application/pdf' });
-        const url = window.URL.createObjectURL(blob);
-        window.open(url);
-      },
-      error: (error) => {
-        console.error('Error al descargar el reporte:', error);
-      }
-    });
-  }
-
   /**
-   * Cierra la sesión del usuario eliminando los datos de almacenamiento local y de sesión.
-   * Luego, redirige a la página de clientes.
+   * Cierra la sesión del usuario y redirige a la página de clientes.
    */
   cerrarSesion(): void {
     localStorage.clear();
     sessionStorage.clear();
     this.router.navigate(['/clientes']);
+  }
+
+  /**
+   * Genera y descarga el reporte de inventario en formato PDF.
+   */
+  generarReporteInventario(): void {
+    this.inventarioService.generarReporteInventario().subscribe({
+      next: (data) => this.descargarArchivo(data, 'reporte-inventario.pdf'),
+      error: (error) => console.error('Error al generar reporte de inventario:', error)
+    });
+  }
+
+  /**
+   * Genera y descarga el reporte histórico de precios en formato PDF.
+   */
+  generarReporteHistorico(): void {
+    this.inventarioService.generarHistoricoPrecios().subscribe({
+      next: (data) => this.descargarArchivo(data, 'reporte-historico.pdf'),
+      error: (error) => console.error('Error al generar reporte de inventario:', error)
+    });
+  }
+
+  /**
+   * Genera y descarga el reporte de pedidos en formato PDF.
+   */
+  generarReportePedido(): void {
+    this.inventarioService.generarReportePedidos().subscribe({
+      next: (data) => this.descargarArchivo(data, 'reporte-pedidos.pdf'),
+      error: (error) => console.error('Error al generar reporte de inventario:', error)
+    });
+  }
+
+  /**
+   * Genera y descarga el reporte de ventas en formato PDF.
+   */
+  generarReporteVentas(): void {
+    this.inventarioService.generarReporteVentas().subscribe({
+      next: (data) => this.descargarArchivo(data, 'reporte-ventas.pdf'),
+      error: (error) => console.error('Error al generar reporte de inventario:', error)
+    });
+  }
+
+  /**
+   * Método para descargar el archivo generado.
+   * @param data Blob con los datos del archivo.
+   * @param filename Nombre del archivo a descargar.
+   */
+  private descargarArchivo(data: Blob, filename: string): void {
+    const url = window.URL.createObjectURL(data);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = filename;
+    link.click();
+    window.URL.revokeObjectURL(url);
   }
 }
