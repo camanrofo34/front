@@ -162,6 +162,13 @@ export class GestionVehiculosComponent implements OnInit {
     });
   }
 
+  generarReporteCuentas(): void {
+    this.inventarioService.generarReporteCuentas().subscribe({
+      next: (data) => this.descargarArchivo(data, 'reporte-cuentas.pdf'),
+      error: (error) => console.error('Error al generar reporte de cuentas:', error)
+    });
+  }
+
   /**
    * Método para descargar el archivo generado.
    * @param data Blob con los datos del archivo.

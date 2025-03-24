@@ -32,7 +32,6 @@ export class LoginComponentDescuentos {
             alert('Por favor, ingrese un usuario y contraseña válidos.');
             return;
         }
-        console.log('Formulario enviado. Usuario:', this.username, 'Contraseña:', this.password);
         this.login.loginSecretario(this.username, this.password).subscribe(
             token => {
                 console.log('Token recibido:', token);

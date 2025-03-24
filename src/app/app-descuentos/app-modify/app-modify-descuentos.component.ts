@@ -18,7 +18,7 @@ import { DescuentoService } from '../../services/descuentos.service';
   templateUrl: './app-modify-descuentos.component.html',
   styleUrls: ['./app-modify-descuentos.component.css']
 })
-export class ModifyComponentImpuestos implements OnInit {
+export class ModifyComponentDescuentos implements OnInit {
 
     descuento: Descuento = {
         id: 0,
@@ -36,11 +36,11 @@ export class ModifyComponentImpuestos implements OnInit {
 
 
     ngOnInit(): void {
-        const idParam = this.route.snapshot.paramMap.get('idImpuesto');
+        const idParam = this.route.snapshot.paramMap.get('idDescuento');
         this.idDescuento = idParam ? +idParam : null;
-        console.log('ID del impuesto:', this.idDescuento);
+        console.log('ID del descuento:', this.idDescuento);
         if (this.idDescuento) {
-          this.cargarImpuesto(this.idDescuento);
+          this.cargarDescuento(this.idDescuento);
         }
     }
 
@@ -48,7 +48,7 @@ export class ModifyComponentImpuestos implements OnInit {
      * @method cargarImpuesto
      * @description Obtiene el impuesto desde el servicio.
      */
-    cargarImpuesto(id: number): void {
+    cargarDescuento(id: number): void {
         this.descuentoService.obtenerDescuento(id).subscribe({
             next: (data) => {
                 this.descuento = data;
@@ -70,19 +70,23 @@ export class ModifyComponentImpuestos implements OnInit {
             alert('Por favor, ingrese un nombre válido');
             return;
         }
-        if (this.descuento.porcentaje<=0) {
-            alert('Por favor, ingrese un valor válido');
+        if (!this.descuento.descripcion.trim()) {
+            alert('Por favor, ingrese una descripción válida');
             return;
         }
-        console.log('Formulario enviado. Impuesto:', this.descuento);
+        if (this.descuento.porcentaje<=0) {
+            alert('Por favor, ingrese un valor de porcentaje válido');
+            return;
+        }
+        console.log('Formulario enviado. Descuento:', this.descuento);
         this.descuentoService.actualizarDescuento(this.descuento).subscribe({
             next: () => {
-                alert('Impuesto actualizado con éxito.');
+                alert('Descuento actualizado con éxito.');
                 this.router.navigate(['/descuentos/gestion']);
             },
             error: (error) => {
-                console.error('Error al actualizar impuesto:', error);
-                alert('No se pudo crear el impuesto.');
+                console.error('Error al actualizar descuento:', error);
+                alert('No se pudo crear el descuento.');
             }
         });
     }

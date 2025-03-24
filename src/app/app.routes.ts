@@ -29,6 +29,8 @@ import { AgregarComponentImpuestos } from './app-impuestos/app-register/app-regi
 import { ModifyComponentImpuestos } from './app-impuestos/app-modify/app-modify-impuestos.component';
 import { LoginComponentDescuentos } from './app-descuentos/app-login-descuentos.component';
 import { AppDescuentosComponent } from './app-descuentos/app-gestion/app-impuestos.component';
+import { ModifyComponentDescuentos } from './app-descuentos/app-modify/app-modify-descuentos.component';
+import { AgregarComponentDescuentos } from './app-descuentos/app-register/app-register-descuentos.component';
 
 /**
  * Configuración de rutas de la aplicación
@@ -124,11 +126,11 @@ const routeConfig: Routes = [
   },
   {
     path: 'descuentos/modify/:idDescuento',
-    component: ModifyComponentImpuestos
+    component: ModifyComponentDescuentos
   },
   {
     path: 'descuentos/register',
-    component: AgregarComponentImpuestos
+    component: AgregarComponentDescuentos
   }
 ];
 

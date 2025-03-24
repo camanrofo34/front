@@ -36,8 +36,8 @@ export class AppDescuentosComponent implements OnInit {
         this.descuentos = data;
       },
       error: (error) => {
-        console.error('Error al cargar impuestos:', error);
-        alert('No se pudo obtener la lista de impuestos.');
+        console.error('Error al cargar descuentos:', error);
+        alert('No se pudo obtener la lista de descuentos.');
       }
     });
   }
@@ -62,8 +62,8 @@ export class AppDescuentosComponent implements OnInit {
 
 
   /**
-   * @method editarImpuesto
-   * @description Redirige a la página de edición de un impuesto.
+   * @method modificarDescuento
+   * @description Redirige a la página de edición de un descuento.
    */
   modificarDescuento(id: number): void {
     this.router.navigate(['/descuentos/modify', id]);

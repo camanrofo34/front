@@ -47,6 +47,15 @@ export class InventarioService {
     );
   }
 
+  generarReporteCuentas(): Observable<Blob> {
+    return this.http.get(`${this.apiUrl}/cuentas-por-cobrar`, {
+      headers: this.getHeaders(),
+      responseType: 'blob'
+    }).pipe(
+      catchError(this.handleError)
+    );
+  }
+
   generarReporteVentas(): Observable<Blob> {
     return this.http.get(`${this.apiUrl}/ventas`, {
       headers: this.getHeaders(),
