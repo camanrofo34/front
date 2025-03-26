@@ -74,6 +74,15 @@ export class InventarioService {
     );
   }
 
+  generarMovimientoInventario(): Observable<Blob> {
+    return this.http.get(`${this.apiUrl}/movimiento-inventario`, {
+      headers: this.getHeaders(),
+      responseType: 'blob'
+    }).pipe(
+      catchError(this.handleError)
+    );
+  }
+
   private handleError(error: HttpErrorResponse): Observable<never> {
     console.error('An error occurred:', error);
     return throwError(() => new Error('Something bad happened; please try again later.'));

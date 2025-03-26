@@ -33,6 +33,10 @@ export class AgregarComponentImpuestos {
             alert('Por favor, ingrese un nombre válido');
             return;
         }
+        if (!this.impuesto.descripcion.trim()) {
+            alert('Por favor, ingrese una descripción válida');
+            return;
+        }
         if (this.impuesto.porcentaje<=0) {
             alert('Por favor, ingrese un valor válido');
             return;

@@ -153,6 +153,16 @@ export class GestionVehiculosComponent implements OnInit {
   }
 
   /**
+   * Genera y descarga el reporte de movimientos de inventario en formato PDF.
+   */
+  generarReporteMovimientos(): void {
+    this.inventarioService.generarMovimientoInventario().subscribe({
+      next: (data) => this.descargarArchivo(data, 'reporte-movimientos.pdf'),
+      error: (error) => console.error('Error al generar reporte de inventario:', error)
+    });
+  }
+
+  /**
    * Genera y descarga el reporte de ventas en formato PDF.
    */
   generarReporteVentas(): void {

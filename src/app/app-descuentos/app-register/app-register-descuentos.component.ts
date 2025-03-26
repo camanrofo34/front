@@ -35,11 +35,15 @@ export class AgregarComponentDescuentos {
             alert('Por favor, ingrese un nombre válido');
             return;
         }
+        if (!this.descuento.descripcion.trim()) {
+            alert('Por favor, ingrese una descripción válida');
+            return;
+        }
         if (this.descuento.porcentaje<=0) {
             alert('Por favor, ingrese un valor válido');
             return;
         }
-        console.log('Formulario enviado. Impuesto:', this.descuento);
+        console.log('Formulario enviado. Descuento:', this.descuento);
         this.descuentoService.crearDescuento(this.descuento).subscribe({
             next: () => {
                 alert('Impuesto creado con éxito.');
