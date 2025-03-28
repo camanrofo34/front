@@ -2,6 +2,16 @@
   <div class="orden-container">
     <h2>Orden de Compra</h2>
 
+    <!-- Selección de tipo de orden -->
+    <div class="tipo-orden">
+      <label for="tipoOrden">Tipo de Orden:</label>
+      <select id="tipoOrden" [(ngModel)]="tipoOrdenSeleccionado">
+        <option value="vehiculo">Vehículo</option>
+        <option value="accesorio">Accesorio</option>
+        <option value="mantenimiento">Mantenimiento/Garantía</option>
+      </select>
+    </div>
+
     <!-- Sección de entrada para IDs de cliente y trabajador -->
     <div class="id-inputs">
       <label for="idCliente">ID Cliente:</label>
@@ -21,11 +31,24 @@
       />
     </div>
 
-    <!-- Componente de tabla para selección de vehículos -->
+    <!-- Formulario de vehículos -->
     <app-app-ordenc-tabla 
+      *ngIf="tipoOrdenSeleccionado === 'vehiculo'"
       (ordenVehiculosChange)="actualizarOrdenVehiculos($event)" 
       [refrescarListas]="refrescarListas">
     </app-app-ordenc-tabla>
+
+    <!-- Formulario de accesorios -->
+    <app-app-accesorios
+      *ngIf="tipoOrdenSeleccionado === 'accesorio'"
+      (ordenAccesoriosChange)="actualizarOrdenAccesorios($event.idAccesorios, $event.cantidad)">
+    </app-app-accesorios>
+
+    <!-- Formulario de mantenimiento
+    <app-app-mantenimiento
+      *ngIf="tipoOrdenSeleccionado === 'mantenimiento'"
+      (ordenMantenimientoChange)="actualizarOrdenMantenimiento($event)">
+    </app-app-mantenimiento> -->
 
     <!-- Botón para guardar la orden de compra -->
     <button type="submit" class="guardar-button" (click)="guardarOrden()">
