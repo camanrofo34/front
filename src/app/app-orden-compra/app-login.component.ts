@@ -1,3 +1,4 @@
+
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
@@ -7,7 +8,7 @@ import { LoginServiceService } from '../services/login-service.service';
 /**
  * @class LoginComponentOrdenCompra
  * @description 
- * Componente encargado de gestionar el inicio de sesión de los asesores comerciales.
+ * Componente encargado de gestionar el inicio de sesión de los asesores comerciales. 
  * Permite autenticar a los usuarios y, en caso de éxito, los redirige a la sección de gestión de órdenes de compra.
  * Si la autenticación falla, muestra un mensaje de error.
  *

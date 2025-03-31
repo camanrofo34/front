@@ -31,6 +31,8 @@ import { LoginComponentDescuentos } from './app-descuentos/app-login-descuentos.
 import { AppDescuentosComponent } from './app-descuentos/app-gestion/app-impuestos.component';
 import { ModifyComponentDescuentos } from './app-descuentos/app-modify/app-modify-descuentos.component';
 import { AgregarComponentDescuentos } from './app-descuentos/app-register/app-register-descuentos.component';
+import { AppRecuperacionCredencialesComponent } from './app-recuperacion-credenciales/app-recuperacion-credenciales.component';
+import { AppExhibicionComponent } from './app-exhibicion/app-exhibicion.component'; // esto esta mal
 
 /**
  * Configuración de rutas de la aplicación
@@ -131,6 +133,14 @@ const routeConfig: Routes = [
   {
     path: 'descuentos/register',
     component: AgregarComponentDescuentos
+  },
+  {
+    path: 'recuperacion-credenciales',
+    component: AppRecuperacionCredencialesComponent
+  },
+  {
+    path: 'exhibicion',
+    component: AppExhibicionComponent
   }
 ];
 

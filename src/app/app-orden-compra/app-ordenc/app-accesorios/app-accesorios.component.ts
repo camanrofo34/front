@@ -18,17 +18,17 @@ export class AppAccesoriosComponent {
       alert('No hay suficiente stock disponible');
       return;
     }
-    accesorio.cantidadSeleccionada = cantidad;
+    //accesorio.cantidadSeleccionada = cantidad;
   }
 
   // Método para emitir la selección de accesorios al componente padre
   actualizarListaAccesorios() {
-    const accesoriosSeleccionados = this.accesorios.filter(acc => acc.cantidadSeleccionada > 0);
+    //const accesoriosSeleccionados = this.accesorios.filter(acc => acc.cantidadSeleccionada > 0);
     
-    const idAccesorios = accesoriosSeleccionados.map(acc => acc.id);
-    const cantidad = accesoriosSeleccionados.map(acc => acc.cantidadSeleccionada);
+    //const idAccesorios = accesoriosSeleccionados.map(acc => acc.id);
+    //const cantidad = accesoriosSeleccionados.map(acc => acc.cantidadSeleccionada);
     
-    this.ordenAccesoriosChange.emit({ idAccesorios, cantidad });
+    //this.ordenAccesoriosChange.emit({ idAccesorios, cantidad });
   }
 
 }
