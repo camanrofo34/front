@@ -11,14 +11,14 @@
 
 /* Fondo para la parte superior (nombre del vehículo) */
 .exhibicion-header {
-  background-image: url("https://images.unsplash.com/photo-1493238792000-8113da705763?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y2FyJTIwd2FsbHBhcGVyfGVufDB8fDB8fHww");
+  background-image: url("https://i.ibb.co/PZR67hr9/A1v1.png");
   justify-content: left;
   padding-left: 5%;
 }
 
 /* Fondo para la parte inferior (descripción del vehículo) */
 .exhibicion-descripcion {
-  background-image: url("https://i.ibb.co/FMv4cVr/carro1.jpg");
+  background-image: url("https://i.ibb.co/Jj9K7htJ/A1v2.png");
   justify-content: right;
   padding-right: 5%;
 }
