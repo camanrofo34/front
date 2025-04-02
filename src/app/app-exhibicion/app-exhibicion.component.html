@@ -1,13 +1,20 @@
-<div class="exhibicion-container exhibicion-header">
+<div 
+  class="exhibicion-container exhibicion-header fade" 
+  [ngClass]="{'show': fadeIn}"
+  [ngStyle]="{'background-image': 'url(' + modeloActual.imagenHeader + ')'}"
+>
   <div class="info-box">
-    <h1>SPEEDORZ Model A1-R8</h1>
+    <h1>{{ modeloActual.nombre }}</h1>
   </div>
 </div>
 
-<div class="exhibicion-container exhibicion-descripcion">
-  <div class="info-box">
+<div 
+  class="exhibicion-container exhibicion-descripcion fade" 
+  [ngClass]="{'show': fadeIn}"
+  [ngStyle]="{'background-image': 'url(' + modeloActual.imagenDescripcion + ')'}"
+>
+  <div class="info-box info-box-right">
     <h1>Exhibición</h1>
-    <p>La exhibición de la SPEEDORZ Model R8 es una experiencia única que combina tecnología avanzada y diseño innovador. Este modelo cuenta con un motor potente y eficiente, capaz de alcanzar velocidades impresionantes en poco tiempo. Su diseño aerodinámico no solo mejora el rendimiento, sino que también le da un aspecto elegante y moderno.</p>
-    <p>La SPEEDORZ Model R8 está equipada con características de seguridad de última generación, incluyendo frenos antibloqueo y control de tracción, lo que garantiza una conducción segura y confiable. Además, su interior está diseñado para ofrecer comodidad y lujo, con asientos de cuero y un sistema de entretenimiento de alta calidad.</p>
+    <p>{{ modeloActual.descripcion }}</p>
   </div>
 </div>

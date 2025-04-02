@@ -33,6 +33,8 @@ import { ModifyComponentDescuentos } from './app-descuentos/app-modify/app-modif
 import { AgregarComponentDescuentos } from './app-descuentos/app-register/app-register-descuentos.component';
 import { AppRecuperacionCredencialesComponent } from './app-recuperacion-credenciales/app-recuperacion-credenciales.component';
 import { AppExhibicionComponent } from './app-exhibicion/app-exhibicion.component'; // esto esta mal
+import { RecuperacionCodigoComponent } from './app-recuperacion-credenciales/recuperacion-codigo/recuperacion-codigo.component';
+
 
 /**
  * Configuración de rutas de la aplicación
@@ -137,6 +139,10 @@ const routeConfig: Routes = [
   {
     path: 'recuperacion-credenciales',
     component: AppRecuperacionCredencialesComponent
+  },
+  {
+    path: 'recuperacion-credenciales/recuperacion-codigo',
+    component: RecuperacionCodigoComponent
   },
   {
     path: 'exhibicion',

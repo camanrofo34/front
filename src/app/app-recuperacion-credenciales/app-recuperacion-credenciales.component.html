@@ -1,1 +1,16 @@
-<h1>Recuperación de Credenciales</h1>
+<main>
+    <div class="login-container">
+        <h2>Recuperar contraseña</h2>
+        <p>Ingrese su correo electrónico</p>
+
+        <!-- Formulario para ingresar el correo -->
+        <form (submit)="enviarCorreo()">
+            <div class="input-group">
+                <input type="email" [(ngModel)]="correo" name="email" placeholder="Correo electrónico" required>
+            </div>
+
+            <!-- Botón para enviar el código de recuperación -->
+            <button type="submit" class="login-button">Enviar código</button>
+        </form>
+    </div>
+</main>
