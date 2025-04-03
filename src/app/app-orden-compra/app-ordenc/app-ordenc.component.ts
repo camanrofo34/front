@@ -18,7 +18,7 @@ import { ordenAccesorios } from '../../domain/orden-accesorio-dto.model';
  */
 @Component({
   selector: 'app-app-ordenc', // Selector del componente en la plantilla
-  imports: [CommonModule, AppOrdencTablaComponent, FormsModule, AppAccesoriosComponent, AppMantenimientoComponent], // Módulos requeridos
+  imports: [CommonModule, AppOrdencTablaComponent, FormsModule, AppAccesoriosComponent], // Módulos requeridos
   templateUrl: './app-ordenc.component.html', // Archivo de plantilla HTML
   styleUrls: ['./app-ordenc.component.css'] // Archivo de estilos CSS
 })

@@ -34,6 +34,7 @@ import { AgregarComponentDescuentos } from './app-descuentos/app-register/app-re
 import { AppRecuperacionCredencialesComponent } from './app-recuperacion-credenciales/app-recuperacion-credenciales.component';
 import { AppExhibicionComponent } from './app-exhibicion/app-exhibicion.component'; // esto esta mal
 import { RecuperacionCodigoComponent } from './app-recuperacion-credenciales/recuperacion-codigo/recuperacion-codigo.component';
+import { GarantiaComponent } from './garantia/garantia.component';
 
 
 /**
@@ -103,6 +104,10 @@ const routeConfig: Routes = [
   {
     path: 'ordenCompra/venta', // Ruta para la gestión de órdenes de compra
     component: AppOrdencComponent
+  },
+  {
+    path: 'ordenCompra/garantia',
+    component: GarantiaComponent
   },
   {
     path: 'impuestos', // Ruta para la gestión de impuestos

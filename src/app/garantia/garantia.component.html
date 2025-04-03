@@ -1,0 +1,24 @@
+<div class="container">
+    <h2>Revisión de Garantía</h2>
+    <div class="revision-container">
+        <label for="kmUso">Kilómetros de Uso:</label>
+        <input
+            type="number"
+            id="kmUso"
+            placeholder="Ingrese Kilómetros de Uso"
+            [(ngModel)]="kmUso"
+        />
+        <label for="fechaCompra">Fecha de Compra</label>
+        <input
+            type="date"
+            id="fechaCompra"
+            placeholder="Ingrese Fecha de Compra"
+            [(ngModel)]="fechaCompra"
+        />
+    </div>
+    <div class="button-container">
+        <button type="submit" class="validar-button" (click)="validarGarantia()">
+            Validar
+        </button>
+    </div>
+</div>
