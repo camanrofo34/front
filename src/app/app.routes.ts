@@ -35,6 +35,8 @@ import { AppRecuperacionCredencialesComponent } from './app-recuperacion-credenc
 import { AppExhibicionComponent } from './app-exhibicion/app-exhibicion.component'; // esto esta mal
 import { RecuperacionCodigoComponent } from './app-recuperacion-credenciales/recuperacion-codigo/recuperacion-codigo.component';
 import { GarantiaComponent } from './garantia/garantia.component';
+import { AppCajaComponent } from './app-caja/app-caja.component';
+import { GestionCajaComponent } from './app-caja/gestion-caja/gestion-caja.component';
 
 
 /**
@@ -152,7 +154,16 @@ const routeConfig: Routes = [
   {
     path: 'exhibicion',
     component: AppExhibicionComponent
-  }
+  },
+  {
+    path: 'caja',
+    component: AppCajaComponent
+  },
+  {
+    path: 'caja/gestion',
+    component: GestionCajaComponent
+  }  
+
 ];
 
 export default routeConfig;
