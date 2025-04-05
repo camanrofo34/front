@@ -1,1 +1,34 @@
-<p>gestion-caja works!</p>
+<main>
+  <div class="management-container">
+    <h2>Expedición de Facturas</h2>
+
+    <!-- Encabezado con subtítulo -->
+    <div class="management-header">
+      <h3>Últimas Transacciones</h3>
+    </div>
+
+    <!-- Tabla de facturas -->
+    <table class="management-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Cliente</th>
+          <th>Descripción</th>
+          <th>Total</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let factura of facturas; trackBy: trackById">
+          <td>{{ factura.id }}</td>
+          <td>{{ factura.cliente }}</td>
+          <td>{{ factura.descripcion }}</td>
+          <td>${{ factura.total | number:'1.0-0' }}</td>
+          <td>
+            <button (click)="imprimirFactura(factura.id)" class="action-button print-button">Imprimir</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</main>

@@ -5,12 +5,22 @@ import { CommonModule } from '@angular/common';
   selector: 'app-gestion-caja',
   standalone: true,
   imports: [CommonModule],
-  template: `
-    <div class="gestion-caja">
-      <h2>Gestión de Caja</h2>
-      <!-- Aquí va la lógica de gestión -->
-    </div>
-  `,
+  templateUrl: './gestion-caja.component.html',
   styleUrls: ['./gestion-caja.component.css']
 })
-export class GestionCajaComponent {}
+export class GestionCajaComponent {
+  facturas = [
+    { id: 1, cliente: 'Juan Pérez', descripcion: 'Compra de productos A y B', total: 150000 },
+    { id: 2, cliente: 'María López', descripcion: 'Servicios prestados', total: 230000 },
+    
+  ];
+
+  imprimirFactura(id: number) {
+    console.log('Imprimir factura con id:', id);
+    // Segun GPT, aquí se integra la lógica para generar el PDF con jsPDF, html2pdf o lo que william haya usado
+  }
+ 
+  trackById(index: number, item: any) {
+    return item.id;
+  }
+}
