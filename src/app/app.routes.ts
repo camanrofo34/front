@@ -37,7 +37,7 @@ import { RecuperacionCodigoComponent } from './app-recuperacion-credenciales/rec
 import { GarantiaComponent } from './garantia/garantia.component';
 import { AppCajaComponent } from './app-caja/app-caja.component';
 import { GestionCajaComponent } from './app-caja/gestion-caja/gestion-caja.component';
-
+import { AppRepuestosComponent } from './app-repuestos/app-repuestos.component';
 
 /**
  * Configuración de rutas de la aplicación
@@ -162,7 +162,11 @@ const routeConfig: Routes = [
   {
     path: 'caja/gestion',
     component: GestionCajaComponent
-  }  
+  },
+  {
+    path: 'repuestos',
+    component: AppRepuestosComponent,
+  }
 
 ];
 

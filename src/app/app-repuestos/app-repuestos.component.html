@@ -1,0 +1,37 @@
+<main>
+    <div class="management-container">
+      <h2>Gestión de Repuestos</h2>
+  
+      <!-- Encabezado -->
+      <div class="management-header">
+        <h3>Repuestos Disponibles</h3>
+      </div>
+  
+      <!-- Tabla de repuestos -->
+      <table class="management-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Categoría</th>
+            <th>Cantidad</th>
+            <th>Precio</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let repuesto of repuestos; trackBy: trackById">
+            <td>{{ repuesto.id }}</td>
+            <td>{{ repuesto.nombre }}</td>
+            <td>{{ repuesto.categoria }}</td>
+            <td>{{ repuesto.cantidad }}</td>
+            <td>${{ repuesto.precio | number:'1.0-0' }}</td>
+            <td>
+              <button (click)="verDetalle(repuesto.id)" class="action-button detail-button">Ver Detalle</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+  
